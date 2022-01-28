@@ -1,173 +1,86 @@
 html {
-    font-size: 14px;
-    position: relative;
-    min-height: 100%;
-    font-family: Roboto;
+    font-size: 18px;
 }
 
 @media (min-width: 768px) {
     html {
-        font-size: 16px;
+        /*Add for mobile*/
     }
 }
 
 body {
-    margin-bottom: 60px;
-    background-color: #FFFEF2;
     margin: 0;
-}
-
-nav a, nav a:link, nav a:visited, nav a:focus, nav a:hover, nav a:active {
-    text-decoration: none;
-    color: #FFFEF2;
+    overflow: hidden;
 }
 
 .navbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 13px 0 13px;
-    position: static;
-    width: auto;
-    height: 2.5rem;
-    background: #39876F;
-    flex: none;
-    order: 1;
-    filter: drop-shadow(0.167rem 0px 0.167rem rgba(0, 0, 0, 0.25));
-    align-self: stretch;
-    flex-grow: 0;
+    overflow: hidden;
+    background-color: #39876F;
 }
 
-.navbar-title {
-    position: static;
-    color: #FFFEF2;
-    font-family: Roboto, serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+    .navbar a {
+        float: left;
+        color: #FFFEF2;
+        text-align: center;
+        padding: 10px 16px;
+        text-decoration: none;
+        text-shadow: 2px 4px 4px rgb(0 0 0 / 25%);
+    }
+
+.brand {
+    position: relative;
 }
 
-.logo {
-    position: static;
-    width: 2rem;
-    height: 2rem;
-    filter: brightness(0) invert(1);
+    .brand img {
+        width: 20px;
+        float: left;
+        margin: auto;
+        position: absolute;
+        bottom: 10px;
+    }
+
+    .brand span {
+        padding-left: 25px;
+    }
+
+.navbar .right {
+    float: right !important;
 }
 
-.login {
-    position: static;
-    height: 2.5rem;
-    right: 9rem;
-    top: 0;
-    font-family: Roboto, serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 1rem;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: inherit;
-    flex: none;
-    order: 8;
-    flex-grow: 0;
-    margin: 0 0;
+.navbar a:hover:not(.brand) {
+    background-color: #276e59;
 }
 
-.register {
-    position: static;
-    height: 2.5rem;
-    right: 0;
-    top: 0;
-    font-family: Roboto, serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 1rem;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: inherit;
-    flex: none;
-    order: 10;
-    flex-grow: 0;
-    margin: 0 0;
-}
-
-.line3 {
-    position: static;
-    width: 2rem;
-    height: 0;
-    right: 13rem;
-    top: 1rem;
-    border: 1px solid #FFFEF2;
-    transform: rotate(90deg);
-    flex: none;
-    order: 7;
-    flex-grow: 0;
-    margin-left: auto;
-}
-
-.line4 {
-    position: static;
-    width: 2rem;
-    height: 0;
-    right: 6rem;
-    top: 1rem;
-    border: 1px solid #FFFEF2;
-    transform: rotate(90deg);
-    flex: none;
-    order: 9;
-    flex-grow: 0;
-    margin: 0 0;
-}
-
-.main-page-content {
-    position: static;
-    flex: none;
-    order: 2;
-    align-self: stretch;
-    flex-grow: 1;
-    margin: 0 0;
-}
-
-.main-page-background {
+.background {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 2.5rem;
-    bottom: 0;
     width: 100%;
-    height: calc(100% - 2.5rem);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     z-index: -1;
 }
 
-/* ??????? ???????? */
-
-.main-page-title {
-    position: absolute;
-    left: 13.89%;
-    right: 13.89%;
-    top: 2.5rem;
-    bottom: 76.46%;
-    font-family: Roboto Mono, serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 96px;
-    line-height: 8rem;
-    text-align: center;
-    z-index: -1;
+    .background.gradient {
+        background: linear-gradient(180deg, rgba(255, 254, 242, 0) calc(100vw/16*9/100*60), rgba(255, 254, 242, 1) calc(100vw/16*9/100*80));
+        height: 100%
+    }
+/*Content*/
+.content {
+    font-size: 1.5em;
+    margin: 0 15%;
     color: #FFFEF2;
-    text-shadow: 2px 4px 7px rgba(0, 0, 0, 0.25);
+    text-shadow: 1px 2px 2px rgb(0 0 0 / 25%);
+}
+
+    .content p {
+        text-align: justify;
+        text-indent: 1em;
+        margin: 0.25em;
+    }
+
+/*Title*/
+.title {
+    font-weight: bold;
+    font-size: 2em;
+    text-shadow: 2px 4px 7px rgb(0 0 0 / 25%);
+    text-align: center;
 }
 
 .main-page-text {
@@ -231,6 +144,17 @@ nav a, nav a:link, nav a:visited, nav a:focus, nav a:hover, nav a:active {
     font-size: 16px;
 }
 
-.content{
+.admin-content{
     text-align: center;
 }
+    .title.big {
+        margin: 1em 0;
+    }
+
+    .title.medium {
+        margin: 0.5em 0;
+    }
+
+    .title.small {
+        margin: 0 0;
+    }

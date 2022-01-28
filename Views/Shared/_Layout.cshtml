@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>@ViewData["Title"] - EdPlatformWebsite</title>
-   
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EdPlatformWebsite.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <nav class="navbar">
-        <a class="navbar-title" asp-area="" asp-controller="Home" asp-action="Index">
-            <img class="logo" src="~/images/logo.svg" alt="Logo">
-            EdPlatform
+    <div class='navbar'>
+        <a class="brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="~/images/logo.svg" alt="Logo">
+            <span>EdPlatform</span>
         </a>
-        <div class="line3"></div>
         <partial name="_LoginPartial" />
-    </nav>
+    </div>
     @RenderBody()
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
