@@ -11,6 +11,7 @@ namespace EdPlatformWebsite.Data
         public DbSet<Exercise>? Exercises { get; set; }
         public DbSet<IOCase>? IOCases { get; set; }
         public DbSet<LastExerciseAttempt>? LastExerciseAttempts { get; set; }
+        public DbSet<LastVisitedPage>? LastVisitedPages { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
