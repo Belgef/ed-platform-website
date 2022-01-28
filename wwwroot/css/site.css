@@ -83,6 +83,70 @@ body {
     text-align: center;
 }
 
+.main-page-text {
+    position: absolute;
+    display: flex;
+    left: 13.89%;
+    right: 13.89%;
+    top: 23.54%;
+    bottom: 0;
+    font-family: Roboto Mono, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 128.7%;
+    text-align: justify;
+    text-indent: 1.25rem;
+    color: #FFFEF2;
+    z-index: -1;
+    text-shadow: 2px 4px 7px rgba(0, 0, 0, 0.25);
+}
+
+.admin-title{
+    color: #39876f;
+}
+
+.admin-lessons-table {
+    font-family: Roboto, serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: end;
+}
+
+.admin-lessons-table td, .admin-lessons-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+.admin-lessons-table tr:nth-child(even){background-color: #f2f2f2;}
+  
+.admin-lessons-table tr:hover {background-color: #ddd;}
+
+.admin-lessons-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: end;
+    background-color: #39876f;
+    color: white;
+}
+
+.create-lesson-link{
+    background-color: #39876F;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.admin-content{
+    text-align: center;
+}
     .title.big {
         margin: 1em 0;
     }
