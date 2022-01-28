@@ -17,7 +17,7 @@ body {
     margin: 0;
 }
 
-a, a:link, a:visited, a:focus, a:hover, a:active {
+nav a, nav a:link, nav a:visited, nav a:focus, nav a:hover, nav a:active {
     text-decoration: none;
     color: #FFFEF2;
 }
