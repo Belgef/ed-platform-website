@@ -15,17 +15,6 @@
 }
 else
 {
-    <div class="register" onclick="showRegisterForm()">
-        <a asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </div>
-    <div class="line4"></div>
-    <div class="login" onclick="showLoginForm()">
-        <a asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </div>
-
-    <!-- Old variant
-    <div class="register" onclick="showRegisterForm()"><p style="cursor: pointer"><p style="cursor: pointer">Зареєструватися</p></div>
-    <div class="line4"></div>
-    <div class="login" onclick="showLoginForm()"><p style="cursor: pointer">Увійти</p></div>
-    -->
+    <a class='right' asp-area="Identity" asp-page="/Account/Register">Register</a>
+    <a class='right' asp-area="Identity" asp-page="/Account/Login">Login</a>
 }
