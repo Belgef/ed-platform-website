@@ -20,18 +20,22 @@
         </thead>
         <tbody>
             @foreach (var item in Model)
-            {<tr>
-                <td>@Html.DisplayFor(modelItem => item.Number)</td>
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Number)</td>
 
-                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
 
-                @{string content = Html.DisplayTextFor(modelItem => item.Content);}
-                <td>@(content.Length > 250 ? content.Substring(0, 250).Trim()+"..." : content)</td>
-                    
-                <td class='centered'><a class="button" asp-action="Details" asp-route-id="@item.Id">Details </a></td>
-                <td class='centered'><a class="button" asp-action="Edit"    asp-route-id="@item.Id">Edit    </a></td>
-                <td class='centered'><a class="button" asp-action="Delete"  asp-route-id="@item.Id">Delete  </a></td>
-            </tr>}
+                    @{
+                        string content = Html.DisplayTextFor(modelItem => item.Content);
+                    }
+                    <td>@(content.Length > 250 ? content.Substring(0, 250).Trim()+"..." : content)</td>
+
+                    <td class='centered'><a class="button" asp-action="Details" asp-route-id="@item.Id">Details </a></td>
+                    <td class='centered'><a class="button" asp-action="Edit" asp-route-id="@item.Id">Edit    </a></td>
+                    <td class='centered'><a class="button" asp-action="Delete" asp-route-id="@item.Id">Delete  </a></td>
+                </tr>
+            }
         </tbody>
     </table>
     <a class="button under-table" asp-action="Create">Add new lesson</a>

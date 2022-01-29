@@ -83,6 +83,18 @@ body {
         font-size: 1.5em;
     }
 
+        .content p.big {
+            font-size: 1.5em;
+        }
+
+        .content p.medium {
+            font-size: 1em;
+        }
+
+        .content p.small {
+            font-size: 0.5em;
+        }
+
     .content .title {
         font-weight: bold;
         text-shadow: 2px 4px 7px rgb(0 0 0 / 25%);
@@ -101,7 +113,7 @@ body {
 
         .content .title.small {
             margin: 0 0;
-            font-size: 1em;
+            font-size: 1.5em;
         }
 
 .dark {
@@ -158,9 +170,21 @@ body {
     border: none;
 }
 
+    .button:hover {
+        background-color: #276e59;
+    }
+
     .button.under-table {
         border-radius: 0 0 15px 15px;
     }
+
+    .button.danger {
+        background-color: #ff3838
+    }
+
+        .button.danger:hover {
+            background-color: #ed3838
+        }
 
 
 
