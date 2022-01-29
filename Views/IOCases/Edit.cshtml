@@ -1,0 +1,42 @@
+﻿@model EdPlatformWebsite.Models.IOCase
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class='content centered'>
+    <h1 class='title medium'>Edit input and output</h1>
+    <form class='model-form' asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Number" class="control-label"></label>
+            <input asp-for="Number" class="form-control" />
+            <span asp-validation-for="Number" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ExerciseId, "Exercise")
+            <select asp-for="ExerciseId" asp-items="@(new SelectList(ViewBag.Exercises, nameof(Exercise.Id), nameof(Exercise.Name)))">
+            </select>
+            <span asp-validation-for="ExerciseId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input" class="control-label"></label>
+            @Html.TextAreaFor(m => m.Input, new { @class = "form-control" })
+            <span asp-validation-for="Input" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Output" class="control-label"></label>
+            @Html.TextAreaFor(m => m.Output, new { @class = "form-control" })
+            <span asp-validation-for="Output" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="button" />
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

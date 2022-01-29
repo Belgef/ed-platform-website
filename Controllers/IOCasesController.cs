@@ -11,64 +11,46 @@ using EdPlatformWebsite.Models;
 
 namespace EdPlatformWebsite.Controllers
 {
-    public class LessonsController : Controller
+    public class IOCasesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public LessonsController(ApplicationDbContext context)
+        public IOCasesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Lessons
+        // GET: IOCases
         public async Task<IActionResult> Index()
         {
-            ViewBag.Modules = _context.Modules.ToDictionary(item => item.Id, item => item);
-            return View(await _context.Lessons.ToListAsync());
+            ViewBag.Exercises = _context.Exercises.ToDictionary(item => item.Id, item => item);
+            return View(await _context.IOCases.ToListAsync());
         }
 
-        // GET: Lessons/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var lesson = await _context.Lessons
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (lesson == null)
-            {
-                return NotFound();
-            }
-
-            return View(lesson);
-        }
-
-        // GET: Lessons/Create
+        // GET: IOCases/Create
         public IActionResult Create()
         {
-            ViewBag.Modules = _context.Modules.ToList();
+            ViewBag.Exercises = _context.Exercises.ToList();
             return View();
         }
 
-        // POST: Lessons/Create
+        // POST: IOCases/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Number,Name,Content,ModuleId")] Lesson lesson)
+        public async Task<IActionResult> Create([Bind("Id,Number,Input,Output,ExerciseId")] IOCase iOCase)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(lesson);
+                _context.Add(iOCase);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(lesson);
+            return View(iOCase);
         }
 
-        // GET: Lessons/Edit/5
+        // GET: IOCases/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +58,23 @@ namespace EdPlatformWebsite.Controllers
                 return NotFound();
             }
 
-            var lesson = await _context.Lessons.FindAsync(id);
-            if (lesson == null)
+            var iOCase = await _context.IOCases.FindAsync(id);
+            if (iOCase == null)
             {
                 return NotFound();
             }
-            ViewBag.Modules = _context.Modules.ToList();
-            return View(lesson);
+            ViewBag.Exercises = _context.Exercises.ToList();
+            return View(iOCase);
         }
 
-        // POST: Lessons/Edit/5
+        // POST: IOCases/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Name,Content,ModuleId")] Lesson lesson)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Input,Output,ExerciseId")] IOCase iOCase)
         {
-            if (id != lesson.Id)
+            if (id != iOCase.Id)
             {
                 return NotFound();
             }
@@ -101,12 +83,12 @@ namespace EdPlatformWebsite.Controllers
             {
                 try
                 {
-                    _context.Update(lesson);
+                    _context.Update(iOCase);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LessonExists(lesson.Id))
+                    if (!IOCaseExists(iOCase.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +99,10 @@ namespace EdPlatformWebsite.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(lesson);
+            return View(iOCase);
         }
 
-        // GET: Lessons/Delete/5
+        // GET: IOCases/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,30 +110,30 @@ namespace EdPlatformWebsite.Controllers
                 return NotFound();
             }
 
-            var lesson = await _context.Lessons
+            var iOCase = await _context.IOCases
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (lesson == null)
+            if (iOCase == null)
             {
                 return NotFound();
             }
 
-            return View(lesson);
+            return View(iOCase);
         }
 
-        // POST: Lessons/Delete/5
+        // POST: IOCases/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var lesson = await _context.Lessons.FindAsync(id);
-            _context.Lessons.Remove(lesson);
+            var iOCase = await _context.IOCases.FindAsync(id);
+            _context.IOCases.Remove(iOCase);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LessonExists(int id)
+        private bool IOCaseExists(int id)
         {
-            return _context.Lessons.Any(e => e.Id == id);
+            return _context.IOCases.Any(e => e.Id == id);
         }
     }
 }

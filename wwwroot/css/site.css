@@ -1,5 +1,6 @@
-html {
+html, input, textarea, select {
     font-size: 18px;
+    font-family: 'Times New Roman'
 }
 
 @media (min-width: 768px) {
@@ -189,7 +190,7 @@ body {
 
 
 /*--------Form--------*/
-.model-form input[type=text], .model-form input[type=number], .model-form textarea {
+.model-form input:not(input[type=submit]), .model-form textarea, .model-form select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -198,8 +199,6 @@ body {
     color: #39876F;
     border-radius: 4px;
     background-color: white;
-    font-size: 18px;
-    font-family: 'Times New Roman'
 }
 
 .model-form textarea {

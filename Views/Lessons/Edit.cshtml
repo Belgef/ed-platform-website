@@ -15,6 +15,12 @@
             <span asp-validation-for="Number" class="text-danger"></span>
         </div>
         <div class="form-group">
+            @Html.LabelFor(m => m.ModuleId, "Module")
+            <select asp-for="ModuleId" asp-items="@(new SelectList(ViewBag.Modules, nameof(Module.Id), nameof(Module.Name)))">
+            </select>
+            <span asp-validation-for="ModuleId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
             <label asp-for="Name" class="control-label"></label>
             <input asp-for="Name" class="form-control" />
             <span asp-validation-for="Name" class="text-danger"></span>
