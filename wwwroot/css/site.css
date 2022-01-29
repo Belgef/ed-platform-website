@@ -11,8 +11,12 @@ html {
 body {
     margin: 0;
     overflow: hidden;
+    background-color: #fffef2;
 }
 
+
+
+/*--------Navbar--------*/
 .navbar {
     overflow: hidden;
     background-color: #39876F;
@@ -27,30 +31,33 @@ body {
         text-shadow: 2px 4px 4px rgb(0 0 0 / 25%);
     }
 
-.brand {
-    position: relative;
-}
-
-    .brand img {
-        width: 20px;
-        float: left;
-        margin: auto;
-        position: absolute;
-        bottom: 10px;
+    .navbar .right {
+        float: right !important;
     }
 
-    .brand span {
-        padding-left: 25px;
+    .navbar a:hover:not(.brand) {
+        background-color: #276e59;
     }
 
-.navbar .right {
-    float: right !important;
-}
+    .navbar .brand {
+        position: relative;
+    }
 
-.navbar a:hover:not(.brand) {
-    background-color: #276e59;
-}
+        .navbar .brand img {
+            width: 20px;
+            float: left;
+            margin: auto;
+            position: absolute;
+            bottom: 10px;
+        }
 
+        .navbar .brand span {
+            padding-left: 25px;
+        }
+
+
+
+/*--------Background--------*/
 .background {
     position: absolute;
     width: 100%;
@@ -61,11 +68,11 @@ body {
         background: linear-gradient(180deg, rgba(255, 254, 242, 0) calc(100vw/16*9/100*60), rgba(255, 254, 242, 1) calc(100vw/16*9/100*80));
         height: 100%
     }
-/*Content*/
+
+/*--------Content--------*/
 .content {
-    font-size: 1.5em;
     margin: 0 15%;
-    color: #FFFEF2;
+    color: #39876F;
     text-shadow: 1px 2px 2px rgb(0 0 0 / 25%);
 }
 
@@ -73,88 +80,105 @@ body {
         text-align: justify;
         text-indent: 1em;
         margin: 0.25em;
+        font-size: 1.5em;
     }
 
-/*Title*/
-.title {
-    font-weight: bold;
-    font-size: 2em;
-    text-shadow: 2px 4px 7px rgb(0 0 0 / 25%);
+    .content .title {
+        font-weight: bold;
+        text-shadow: 2px 4px 7px rgb(0 0 0 / 25%);
+        text-align: center;
+    }
+
+        .content .title.big {
+            margin: 1em 0;
+            font-size: 3em;
+        }
+
+        .content .title.medium {
+            margin: 0.5em 0;
+            font-size: 2em;
+        }
+
+        .content .title.small {
+            margin: 0 0;
+            font-size: 1em;
+        }
+
+.dark {
+    color: #FFFEF2;
+}
+
+.content.centered {
     text-align: center;
 }
 
-.main-page-text {
-    position: absolute;
-    display: flex;
-    left: 13.89%;
-    right: 13.89%;
-    top: 23.54%;
-    bottom: 0;
-    font-family: Roboto Mono, serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 32px;
-    line-height: 128.7%;
-    text-align: justify;
-    text-indent: 1.25rem;
-    color: #FFFEF2;
-    z-index: -1;
-    text-shadow: 2px 4px 7px rgba(0, 0, 0, 0.25);
-}
 
-.admin-title{
-    color: #39876f;
-}
 
-.admin-lessons-table {
-    font-family: Roboto, serif;
+/*--------Table--------*/
+.table {
     border-collapse: collapse;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: end;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 0 0 2px #39876F;
+    overflow: hidden;
 }
 
-.admin-lessons-table td, .admin-lessons-table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-.admin-lessons-table tr:nth-child(even){background-color: #f2f2f2;}
-  
-.admin-lessons-table tr:hover {background-color: #ddd;}
+    .table td, .table th {
+        padding: 8px 15px;
+        max-width: 200px
+    }
 
-.admin-lessons-table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: end;
-    background-color: #39876f;
-    color: white;
-}
+    .table th {
+        background-color: #39876F;
+        color: #fffef2;
+        text-align: center;
+    }
 
-.create-lesson-link{
+    .table td {
+        text-align: left;
+        word-wrap: break-word;
+    }
+
+        .table td.centered {
+            text-align: center;
+        }
+
+    .table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+.button {
     background-color: #39876F;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    margin-bottom: 1rem;
+    color: #fffef2;
+    padding: 8px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    border: none;
 }
 
-.admin-content{
-    text-align: center;
+    .button.under-table {
+        border-radius: 0 0 15px 15px;
+    }
+
+
+
+/*--------Form--------*/
+.model-form input[type=text], .model-form input[type=number], .model-form textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #39876F;
+    color: #39876F;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 18px;
+    font-family: 'Times New Roman'
 }
-    .title.big {
-        margin: 1em 0;
-    }
 
-    .title.medium {
-        margin: 0.5em 0;
-    }
-
-    .title.small {
-        margin: 0 0;
-    }
+.model-form textarea {
+    height: 300px;
+    resize: none;
+}
