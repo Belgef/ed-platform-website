@@ -1,19 +1,19 @@
-﻿@model IEnumerable<EdPlatformWebsite.Models.Lesson>
+﻿@model IEnumerable<EdPlatformWebsite.Models.Exercise>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <div class="content centered">
-    <h1 class="title medium">Lessons</h1>
+    <h1 class="title medium">Exercises</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.Number)</th>
                 <th>@Html.DisplayNameFor(model => model.Name)</th>
-                <th>@Html.DisplayNameFor(model => model.Content)</th>
-                <th>Module</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>Lesson</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -28,12 +28,12 @@
                     <td class='centered'>@Html.DisplayFor(modelItem => item.Name)</td>
 
                     @{
-                        string content = Html.DisplayTextFor(modelItem => item.Content);
+                        string content = Html.DisplayTextFor(modelItem => item.Description);
                     }
                     <td>@(content.Length > 250 ? content.Substring(0, 250).Trim()+"..." : content)</td>
                     
-                    <td>@ViewBag.Modules[item.ModuleId].Name</td>
-
+                    <td>@ViewBag.Lessons[item.LessonId].Name</td>
+                    
                     <td class='centered'><a class="button" asp-action="Details" asp-route-id="@item.Id">Details </a></td>
                     <td class='centered'><a class="button" asp-action="Edit" asp-route-id="@item.Id">Edit    </a></td>
                     <td class='centered'><a class="button" asp-action="Delete" asp-route-id="@item.Id">Delete  </a></td>
@@ -41,5 +41,5 @@
             }
         </tbody>
     </table>
-    <a class="button under-table" asp-action="Create">Add new lesson</a>
+    <a class="button under-table" asp-action="Create">Add new exercise</a>
 </div>

@@ -4,6 +4,7 @@ using EdPlatformWebsite.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EdPlatformWebsite.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220129131238_Added foreign members")]
+    partial class Addedforeignmembers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace EdPlatformWebsite.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LessonId")
+                    b.Property<int?>("LessonId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -57,7 +59,7 @@ namespace EdPlatformWebsite.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ExerciseId")
+                    b.Property<int?>("ExerciseId")
                         .HasColumnType("int");
 
                     b.Property<string>("Input")
@@ -137,7 +139,7 @@ namespace EdPlatformWebsite.Data.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ModuleId")
+                    b.Property<int?>("ModuleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -376,20 +378,20 @@ namespace EdPlatformWebsite.Data.Migrations
 
             modelBuilder.Entity("EdPlatformWebsite.Models.Exercise", b =>
                 {
-                    b.HasOne("EdPlatformWebsite.Models.Lesson", null)
+                    b.HasOne("EdPlatformWebsite.Models.Lesson", "Lesson")
                         .WithMany("Exercises")
-                        .HasForeignKey("LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LessonId");
+
+                    b.Navigation("Lesson");
                 });
 
             modelBuilder.Entity("EdPlatformWebsite.Models.IOCase", b =>
                 {
-                    b.HasOne("EdPlatformWebsite.Models.Exercise", null)
+                    b.HasOne("EdPlatformWebsite.Models.Exercise", "Exercise")
                         .WithMany("IOCases")
-                        .HasForeignKey("ExerciseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ExerciseId");
+
+                    b.Navigation("Exercise");
                 });
 
             modelBuilder.Entity("EdPlatformWebsite.Models.LastExerciseAttempt", b =>
@@ -418,11 +420,11 @@ namespace EdPlatformWebsite.Data.Migrations
 
             modelBuilder.Entity("EdPlatformWebsite.Models.Lesson", b =>
                 {
-                    b.HasOne("EdPlatformWebsite.Models.Module", null)
+                    b.HasOne("EdPlatformWebsite.Models.Module", "Module")
                         .WithMany("Lessons")
-                        .HasForeignKey("ModuleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ModuleId");
+
+                    b.Navigation("Module");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

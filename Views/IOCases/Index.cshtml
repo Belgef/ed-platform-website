@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EdPlatformWebsite.Models.IOCase>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="content centered">
+    <h1 class="title medium">Inputs and outputs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Number)</th>
+                <th>Exercise</th>
+                <th>@Html.DisplayNameFor(model => model.Input)</th>
+                <th>@Html.DisplayNameFor(model => model.Output)</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class='centered'>@Html.DisplayFor(modelItem => item.Number)</td>
+
+                    <td class='centered'>@ViewBag.Exercises[item.ExerciseId].Name</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Input)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.Output)</td>
+                    
+                    <td class='centered'><a class="button" asp-action="Edit" asp-route-id="@item.Id">Edit    </a></td>
+                    <td class='centered'><a class="button" asp-action="Delete" asp-route-id="@item.Id">Delete  </a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="button under-table" asp-action="Create">Add new input and output</a>
+</div>
