@@ -22,7 +22,7 @@ body {
     background-color: #39876F;
 }
 
-    .navbar a {
+    .navbar a, .navbar .button {
         float: left;
         color: #FFFEF2;
         text-align: center;
@@ -169,6 +169,8 @@ body {
     text-decoration: none;
     display: inline-block;
     border: none;
+    font-size: inherit;
+    font-family: inherit;
 }
 
     .button:hover {
