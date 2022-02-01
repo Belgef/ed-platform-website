@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EdPlatformWebsite.Data;
 using EdPlatformWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EdPlatformWebsite.Controllers
 {
+    [Authorize(Policy = "Administrators")]
     public class IOCasesController : Controller
     {
         private readonly ApplicationDbContext _context;

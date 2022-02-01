@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EdPlatformWebsite.Data;
 using EdPlatformWebsite.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EdPlatformWebsite.Controllers
 {
+    [Authorize(Policy = "Administrators")]
     public class LessonsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -28,6 +30,7 @@ namespace EdPlatformWebsite.Controllers
         }
 
         // GET: Lessons/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
