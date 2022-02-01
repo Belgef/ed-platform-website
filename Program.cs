@@ -1,6 +1,7 @@
 using EdPlatformWebsite.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,13 @@ builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+});
+
+//Add authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Administrators", policy =>
+                      policy.RequireClaim(ClaimTypes.Email, "girnyimykola@gmail.com", "mk0996417892@gmail.com"));
 });
 
 // Add services to the container.
