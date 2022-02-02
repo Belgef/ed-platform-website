@@ -10,24 +10,32 @@ body
     margin: 0
     background-color: #fffef2
 
+.text, .title
+    color: #39876F
+    text-decoration: none
+    text-shadow: 2px 4px 4px rgb(0 0 0 / 25%)
+
+.dark
+    color: #FFFEF2
+
+.centered
+    text-align: center
+
 //Navbar
 .navbar
     overflow: hidden
     background-color: #39876F
+    box-shadow: 0 2px 4px rgb(0 0 0 / 25%)
 
     a, .button
+        padding: 0.5em
         float: left
-        color: #FFFEF2
-        text-align: center
-        padding: 10px 16px
-        text-decoration: none
-        text-shadow: 2px 4px 4px rgb(0 0 0 / 25%)
 
     .right
         float: right !important
 
     a:hover:not(.brand)
-        background-color: #276e59
+        background-color: #2f715b
 
     .brand
         position: relative
@@ -37,7 +45,7 @@ body
             float: left
             margin: auto
             position: absolute
-            bottom: 10px
+            bottom: 9px
 
         span
             padding-left: 25px
@@ -88,14 +96,8 @@ body
             font-size: 2em
 
         &.small
-            margin: 0 0
+            margin: 0.25 0
             font-size: 1.5em
-
-    &.centered
-        text-align: center
-
-.dark
-    color: #FFFEF2
 
 //Table
 .table
@@ -138,7 +140,7 @@ body
     font-family: inherit
 
     &:hover
-        background-color: #276e59
+        background-color: #2f715b
 
     &.under-table
         border-radius: 0 0 15px 15px
@@ -150,7 +152,7 @@ body
             background-color: #ed3838
 
 //Form
-.model-form 
+.model-form
     input:not(input[type=submit]), textarea, select
         width: 100%
         padding: 12px 20px
@@ -164,3 +166,89 @@ body
     textarea
         height: 300px
         resize: none
+
+//Sidebar
+.sidebar
+    box-sizing: border-box
+    position: absolute
+    top: 0
+    padding-top: 2.5rem
+    height: 100vh
+    background-color: #39876F
+    z-index: -1
+    box-shadow: 0 0 6px rgb(0 0 0 / 25%)
+
+    &.module
+        width: 2rem
+        z-index: -2
+        background-color: #2f715b
+
+        .shadow-wrap
+            filter: drop-shadow(-3px 0 3px rgba(0, 0, 0, 0.25))
+
+        .tab
+            display: block
+            position: relative
+            text-align: center
+            background-color: #2f715b
+            width: 2rem
+            height: 3rem
+            clip-path: polygon(0% 13%, 100% 0, 100% 100%, 0% 87%)
+            justify-content: center
+            line-height: 3em
+
+            &.selected
+                background-color: #39876F
+
+    &.lesson
+        width: 14rem
+        margin-left: 2rem
+
+    &.left
+        left: 0
+
+    &.right
+        right: 0
+
+    .title
+        text-align: center
+        margin: 0.5em
+
+    .dropdown
+        .arrow
+            height: 0
+            width: 0
+            border-left: 4px solid transparent
+            border-right: 4px solid transparent
+            border-bottom: 4px solid #fffef2
+            position: relative
+            top: 10px
+
+        a
+            display: block
+            width: 90%
+
+    ul
+        list-style-type: none
+        padding-left: 1em
+        margin: 0
+
+    .section
+        .text
+            margin: 0 15px
+            font-size: 0.8em
+
+        a
+            text-decoration: none
+            color: #fffef2
+
+        li.text:hover, .dropdown a:hover
+            background-color: #2f715b
+
+        &collapsed
+            ul
+                display: none
+
+            .arrow
+                border-top: 4px solid #fffef2
+                border-bottom: none

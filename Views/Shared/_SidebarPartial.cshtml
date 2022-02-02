@@ -2,20 +2,9 @@
 {
     public string IntToRoman(int num)
     {
-        int[] val = new int[]{
-            1000, 900, 500, 400,
-            100, 90, 50, 40,
-            10, 9, 5, 4,
-            1
-        };
-
-        string[] syb = new string[]{
-            "M", "CM", "D", "CD",
-            "C", "XC", "L", "XL",
-            "X", "IX", "V", "IV",
-            "I"
-        };
-
+        int[] val = new int[]{ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+        string[] syb = new string[]{ "M", "CM", "D", "CD", "C", "XC", "L", 
+                "XL", "X", "IX", "V", "IV", "I" };
         string romanNum = "";
         int counter = 0;
         while (num > 0)
@@ -27,28 +16,34 @@
             }
             counter++;
         }
-
         return romanNum;
-
     }
 
     public Module? GetModuleById(int id)
     {
         var modules = ViewBag.Modules as List<Module>;
-        return modules?.FirstOrDefault(module => module.Id == id) as Module;
+        return modules?.FirstOrDefault(module => module.Id == id);
     }
 
-    public bool IsLessonCompleted(Lesson lesson)
+    public Lesson? GetFirstModuleLesson(int id)
+    {
+        var _1 = GetModuleById(id);
+        var _2 = _1?.Lessons;
+        var _3 = _2?.MinBy(lesson=>lesson.Number);
+        return GetModuleById(id)?.Lessons?.MinBy(lesson=>lesson.Number);
+    }
+
+    public bool IsLessonCompleted(int id)
     {
         return false;
     }
 
-    public bool IsModuleCompleted(Module module)
+    public bool IsModuleCompleted(int id)
     {
         return false;
     }
 
-    public bool IsExerciseCompleted(Exercise exercise)
+    public bool IsExerciseCompleted(int id)
     {
         return false;
     }
@@ -57,58 +52,48 @@
 @{
     Module? currentModule = GetModuleById(ViewBag.CurrentLesson.ModuleId);
 }
-<div class="left-sidebar">
-    <div class="modules">
-        <div class="module-wrap">
-
-            @if (ViewBag.Modules != null)
+<div class='module sidebar'>
+    <div class='shadow-wrap'>
+        @if (ViewBag.Modules != null)
+        {
+            @foreach (var module in ViewBag.Modules)
             {
-                @foreach (var module in ViewBag.Modules)
-                {
-                    <h1>@currentModule.Id</h1>
-                    <div class="module" style=@(currentModule.Id == module.Id ? "" : " background-color: #2f715b")>
-                        <a class=@("module-number " + (IsModuleCompleted(module) ? "completed" : "")) asp-area=""
-                   asp-controller="Lessons" asp-action="Details" asp-route-id="1">@IntToRoman(module.Number)</a>
-                    </div>
-                }
+                <a class='@("tab text dark" + (IsModuleCompleted(module.Id) ? " completed" : "") + (module.Id==currentModule?.Id ? " selected" : ""))' 
+                        asp-controller="Lessons" asp-action="Details" asp-route-id='@GetFirstModuleLesson(module.Id).Id'>@IntToRoman(module.Number)</a>
             }
-        </div>
+        }
     </div>
-    <div class="lessons-form">
-        <h1 class="module-name">@(currentModule?.Name ?? "")</h1>
-        <div class="lessons-name">
-            @if (currentModule != null && currentModule.Lessons != null)
+</div>
+<div class='lesson sidebar'>
+    <p class='title dark'>@(currentModule?.Name ?? "")</p>
+    <ul>
+        @if (currentModule != null && currentModule.Lessons != null)
+        {
+            @foreach (var lesson in currentModule.Lessons)
             {
-                @foreach (var lesson in currentModule.Lessons)
-                {
-                    <div class="module-content collapsable">
-                        <div class="lesson-title-content">
-                            <img class=@("collapse-icon " + (ViewBag.CurrentLesson.Id == lesson.Id ? "reversed" : ""))
-                         src="~/images/arrow.svg" alt="">
-                            <h2 class=@("lesson-name " + (IsLessonCompleted(lesson) ? "completed" : ""))>@lesson.Name</h2>
-                        </div>
-                        <div class=@("lesson-content " + (ViewBag.CurrentLesson.Id.Equals(lesson.Id) ? "opened" : ""))>
-                            <a style="width: 100%;" asp-area="" asp-controller="Lessons" asp-action="Details"
-                       asp-route-id=@lesson.Id>
-                                <h2 style="font-weight: bold; font-size: 0.8em;" class=@("lesson-content-text " +
-                            (IsLessonCompleted(lesson) ? "completed " : " ") + (ViewBag.CurrentLesson.Id == lesson.Id ?
-                            "selected" : ""))>
-                                    Теорія
-                                </h2>
-                            </a>
-
-                            @if (lesson.Exercises != null)
+                <li class='@("section" + (lesson.Id != ViewBag.CurrentLesson.Id ? " collapsed" : ""))'>
+                    <div class='dropdown'>
+                        <div class='arrow'></div>
+                        <a class='@("text dark" + (IsLessonCompleted(lesson.Id) ? " completed" : ""))' 
+                                asp-controller="Lessons" asp-action="Details" asp-route-id='@ViewBag.CurrentLesson.Id'>
+                            @lesson.Name
+                        </a>
+                    </div>
+                    <ul>
+                        @if (lesson.Exercises != null)
+                        {
+                            @foreach (var exercise in lesson.Exercises)
                             {
-                                @foreach (var exercise in lesson.Exercises)
-                                {
-                                    <a style="margin-left: 1em;" asp-area="" asp-controller="Lessons" asp-action="Details"
-                       asp-route-id=@exercise.Id class=@("lesson-content-text " + (IsExerciseCompleted(exercise) ? " completed " : " ") + ( false ? "selected" : " "))>@exercise.Name</a>
-                                }
+                                <li class='@("text dark" + (IsExerciseCompleted(exercise.Id) ? " completed" : ""))'>
+                                    <a asp-area="" asp-controller="Exercises" asp-action="Details" asp-route-id=@exercise.Id>
+                                        @exercise.Name
+                                    </a>
+                                </li>
                             }
-                        </div>
-                    </div>
-                }
+                        }
+                    </ul>
+                </li>
             }
-        </div>
-    </div>
+        }
+    </ul>
 </div>
