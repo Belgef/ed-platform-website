@@ -27,9 +27,6 @@
 
     public Lesson? GetFirstModuleLesson(int id)
     {
-        var _1 = GetModuleById(id);
-        var _2 = _1?.Lessons;
-        var _3 = _2?.MinBy(lesson=>lesson.Number);
         return GetModuleById(id)?.Lessons?.MinBy(lesson=>lesson.Number);
     }
 
@@ -58,8 +55,12 @@
         {
             @foreach (var module in ViewBag.Modules)
             {
+               @if(GetFirstModuleLesson(module.Id) is not null)
+               {
                 <a class='@("tab text dark" + (IsModuleCompleted(module.Id) ? " completed" : "") + (module.Id==currentModule?.Id ? " selected" : ""))' 
-                        asp-controller="Lessons" asp-action="Details" asp-route-id='@GetFirstModuleLesson(module.Id).Id'>@IntToRoman(module.Number)</a>
+                        asp-controller="Lessons" asp-action="Details" asp-route-id='@GetFirstModuleLesson(module.Id)?.Id'>@IntToRoman(module.Number)</a>
+            
+               }
             }
         }
     </div>
