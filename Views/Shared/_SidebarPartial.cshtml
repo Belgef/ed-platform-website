@@ -3,24 +3,24 @@
     public string IntToRoman(int num)
     {
         int[] val = new int[]{
-1000, 900, 500, 400,
-100, 90, 50, 40,
-10, 9, 5, 4,
-1
-};
+            1000, 900, 500, 400,
+            100, 90, 50, 40,
+            10, 9, 5, 4,
+            1
+        };
 
         string[] syb = new string[]{
-"M", "CM", "D", "CD",
-"C", "XC", "L", "XL",
-"X", "IX", "V", "IV",
-"I"
-};
+            "M", "CM", "D", "CD",
+            "C", "XC", "L", "XL",
+            "X", "IX", "V", "IV",
+            "I"
+        };
 
         string romanNum = "";
         int counter = 0;
         while (num > 0)
         {
-            for (int _ = 0; _ < num / val[counter]; _++)
+            for (int _ = 0; _ < num / val[counter];)
             {
                 romanNum += syb[counter];
                 num -= val[counter];
@@ -66,9 +66,10 @@
                 @foreach (var module in ViewBag.Modules)
                 {
                     <h1>@currentModule.Id</h1>
-                    <div class="module" style=@(currentModule.Id == module.Id ? "" : " background-color: #2f715b")><a
-                    class=@("module-number " + (IsModuleCompleted(module) ? "completed" : "")) asp-area=""
-                    asp-controller="Lessons" asp-action="Details" asp-route-id="1">@IntToRoman(module.Id)</a></div>
+                    <div class="module" style=@(currentModule.Id == module.Id ? "" : " background-color: #2f715b")>
+                        <a class=@("module-number " + (IsModuleCompleted(module) ? "completed" : "")) asp-area=""
+                   asp-controller="Lessons" asp-action="Details" asp-route-id="1">@IntToRoman(module.Number)</a>
+                    </div>
                 }
             }
         </div>
@@ -83,15 +84,17 @@
                     <div class="module-content collapsable">
                         <div class="lesson-title-content">
                             <img class=@("collapse-icon " + (ViewBag.CurrentLesson.Id == lesson.Id ? "reversed" : ""))
-                        src="~/images/arrow.svg" alt="">
+                         src="~/images/arrow.svg" alt="">
                             <h2 class=@("lesson-name " + (IsLessonCompleted(lesson) ? "completed" : ""))>@lesson.Name</h2>
                         </div>
                         <div class=@("lesson-content " + (ViewBag.CurrentLesson.Id.Equals(lesson.Id) ? "opened" : ""))>
                             <a style="width: 100%;" asp-area="" asp-controller="Lessons" asp-action="Details"
-                        asp-route-id=@lesson.Id>
+                       asp-route-id=@lesson.Id>
                                 <h2 style="font-weight: bold; font-size: 0.8em;" class=@("lesson-content-text " +
                             (IsLessonCompleted(lesson) ? "completed " : " ") + (ViewBag.CurrentLesson.Id == lesson.Id ?
-                            "selected" : ""))>Теорія</h2>
+                            "selected" : ""))>
+                                    Теорія
+                                </h2>
                             </a>
 
                             @if (lesson.Exercises != null)
@@ -99,7 +102,7 @@
                                 @foreach (var exercise in lesson.Exercises)
                                 {
                                     <a style="margin-left: 1em;" asp-area="" asp-controller="Lessons" asp-action="Details"
-                        asp-route-id=@exercise.Id class=@("lesson-content-text " + (IsExerciseCompleted(exercise) ? " completed " : " ") + ( false ? "selected" : " "))>@exercise.Name</a>
+                       asp-route-id=@exercise.Id class=@("lesson-content-text " + (IsExerciseCompleted(exercise) ? " completed " : " ") + ( false ? "selected" : " "))>@exercise.Name</a>
                                 }
                             }
                         </div>
