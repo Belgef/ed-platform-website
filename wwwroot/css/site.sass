@@ -1,0 +1,166 @@
+html, input, textarea, select
+    font-size: 18px
+    font-family: 'Times New Roman'
+
+@media (min-width: 768px)
+    html
+        /*Add for mobile*/
+
+body
+    margin: 0
+    background-color: #fffef2
+
+//Navbar
+.navbar
+    overflow: hidden
+    background-color: #39876F
+
+    a, .button
+        float: left
+        color: #FFFEF2
+        text-align: center
+        padding: 10px 16px
+        text-decoration: none
+        text-shadow: 2px 4px 4px rgb(0 0 0 / 25%)
+
+    .right
+        float: right !important
+
+    a:hover:not(.brand)
+        background-color: #276e59
+
+    .brand
+        position: relative
+
+        img
+            width: 20px
+            float: left
+            margin: auto
+            position: absolute
+            bottom: 10px
+
+        span
+            padding-left: 25px
+
+//Background
+.background
+    position: absolute
+    width: 100%
+    z-index: -1
+    top: 0
+
+    &.gradient
+        background: linear-gradient(180deg, rgba(255, 254, 242, 0) calc(100vw/16*9/100*60), rgba(255, 254, 242, 1) calc(100vw/16*9/100*80))
+        height: 100%
+
+//Content
+.content
+    margin: 0 15% 50px
+    color: #39876F
+    text-shadow: 1px 2px 2px rgb(0 0 0 / 25%)
+
+    p
+        text-align: justify
+        text-indent: 1em
+        margin: 0.25em
+        font-size: 1.5em
+
+        &.big
+            font-size: 1.5em
+
+        &.medium
+            font-size: 1em
+
+        &.small
+            font-size: 0.5em
+
+    .title
+        font-weight: bold
+        text-shadow: 2px 4px 7px rgb(0 0 0 / 25%)
+        text-align: center
+
+        &.big
+            margin: 1em 0
+            font-size: 3em
+
+        &.medium
+            margin: 0.5em 0
+            font-size: 2em
+
+        &.small
+            margin: 0 0
+            font-size: 1.5em
+
+    &.centered
+        text-align: center
+
+.dark
+    color: #FFFEF2
+
+//Table
+.table
+    border-collapse: collapse
+    width: 100%
+    margin: 0 auto
+    border-radius: 0 0 15px 15px
+    box-shadow: 0 0 0 2px #39876F
+    overflow: hidden
+
+    td, th
+        padding: 8px 15px
+        max-width: 200px
+
+    th
+        background-color: #39876F
+        color: #fffef2
+        text-align: center
+
+    td
+        text-align: left
+        word-wrap: break-word
+
+        &.centered
+            text-align: center
+
+    tr:nth-child(even)
+        background-color: #f2f2f2
+
+//Button
+.button
+    background-color: #39876F
+    color: #fffef2
+    padding: 8px 15px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    border: none
+    font-size: inherit
+    font-family: inherit
+
+    &:hover
+        background-color: #276e59
+
+    &.under-table
+        border-radius: 0 0 15px 15px
+
+    &.danger
+        background-color: #ff3838
+
+        &:hover
+            background-color: #ed3838
+
+//Form
+.model-form 
+    input:not(input[type=submit]), textarea, select
+        width: 100%
+        padding: 12px 20px
+        margin: 8px 0
+        box-sizing: border-box
+        border: 2px solid #39876F
+        color: #39876F
+        border-radius: 4px
+        background-color: white
+
+    textarea
+        height: 300px
+        resize: none
