@@ -101,7 +101,7 @@ body {
   font-size: 2em;
 }
 .content .title.small {
-  margin: 0.25px 0;
+  margin: 0.25em 0;
   font-size: 1.5em;
 }
 
@@ -158,18 +158,26 @@ body {
 }
 
 .model-form input:not(input[type=submit]), .model-form textarea, .model-form select {
-  width: 100%;
-  padding: 12px 20px;
+  padding: 0 10px;
   margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #39876F;
+  border: none;
+  border-bottom: 1px solid #39876F;
   color: #39876F;
-  border-radius: 4px;
-  background-color: white;
+  background-color: #fffef2;
+}
+.model-form input[type=number] {
+  width: 2em;
 }
 .model-form textarea {
+  width: 100%;
+  box-sizing: border-box;
   height: 300px;
   resize: none;
+  border: 1px solid #39876F;
+  background-color: white;
+}
+.model-form input:focus-visible {
+  outline: none;
 }
 
 .sidebar {

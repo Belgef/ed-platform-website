@@ -5,33 +5,30 @@
 }
 
 <div class='content centered'>
-    <h1 class='title medium'>Create lesson</h1>
+    <h1 class='title medium'>Lesson editor</h1>
     <form class='model-form' asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Number" class="control-label"></label>
-            <input asp-for="Number" class="form-control" />
-            <span asp-validation-for="Number" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ModuleId, "Module")
-            <select asp-for="ModuleId" asp-items="@(new SelectList(ViewBag.Modules, nameof(Module.Id), nameof(Module.Name)))">
-            </select>
-            <span asp-validation-for="ModuleId" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="info">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ModuleId, "Module")
+                <select asp-for="ModuleId" asp-items="@(new SelectList(ViewBag.Modules, nameof(Module.Id), nameof(Module.Name)))">
+                </select>
+                <span asp-validation-for="ModuleId" class="text-danger"></span>
+            </div>
+            <div class='form=group'>
+                <label asp-for="Number" class="control-label">Lesson</label>
+                <input asp-for="Number" class="form-control" />
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <input type="submit" value="Save" class="button" />
+                <a asp-action="Index">Back to List</a>
+            </div>
         </div>
         <div class="form-group">
             <label asp-for="Content" class="control-label"></label>
             @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
             <span asp-validation-for="Content" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Save" class="button" />
-            <a asp-action="Index">Back to List</a>
         </div>
     </form>
 </div>
