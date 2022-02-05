@@ -69,7 +69,7 @@ namespace EdPlatformWebsite.Controllers
             {
                 _context.Add(lesson);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Edit), new { id = lesson.Id });
             }
             return View(lesson);
         }
