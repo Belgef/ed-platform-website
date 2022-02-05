@@ -22,8 +22,8 @@
 
   <ItemGroup>
     
-    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.0.0" />
-    <PackageReference Include="Azure.Identity" Version="1.4.0" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.1" />
+    <PackageReference Include="Azure.Identity" Version="1.5.0" />
     
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.1" />
@@ -32,6 +32,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
+    <PackageReference Include="React.Core" Version="5.2.12" />
+    <PackageReference Include="React.Web" Version="5.2.12" />
+    <PackageReference Include="React.Web.Mvc4" Version="5.2.12" />
+    <PackageReference Include="System.Web.Optimization.React" Version="5.2.12" />
   </ItemGroup>
 
 </Project>
