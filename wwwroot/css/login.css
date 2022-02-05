@@ -1,0 +1,38 @@
+.login-page-title{
+    text-align: center;
+    color: #39876F;
+    padding-bottom: 20px;
+}
+
+.login-form{
+    width: 40%;
+    padding: 7px 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #39876F;
+    color: #39876F;
+    border-radius: 4px;
+    background-color: white;
+}
+
+form .warning{
+    color: rgb(238, 79, 79);
+}
+
+.login-remember-me{
+    font-size: 18px;
+    color: #39876F;
+}
+
+.login-remember-me-checkbox{
+    width: 0.7em;
+    height: 0.7em;
+}
+
+.form-link{
+    color: #39876F;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: inherit;
+    font-family: inherit;
+}
