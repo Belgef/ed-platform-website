@@ -1,0 +1,262 @@
+html, input, textarea, select
+    font-size: 18px
+    font-family: 'Times New Roman'
+
+@media (min-width: 768px)
+    html
+        /*Add for mobile*/
+
+body
+    margin: 0
+    background-color: #fffef2
+
+.text, .title
+    color: #39876F
+    text-decoration: none
+    text-shadow: 2px 4px 4px rgb(0 0 0 / 25%)
+
+.dark
+    color: #FFFEF2
+
+.centered
+    text-align: center
+
+//Navbar
+.navbar
+    overflow: hidden
+    background-color: #39876F
+    box-shadow: 0 2px 4px rgb(0 0 0 / 25%)
+
+    a, .button
+        padding: 0.5em
+        float: left
+
+    .right
+        float: right !important
+
+    a:hover:not(.brand)
+        background-color: #2f715b
+
+    .brand
+        position: relative
+
+        img
+            width: 20px
+            float: left
+            margin: auto
+            position: absolute
+            bottom: 9px
+
+        span
+            padding-left: 25px
+
+//Background
+.background
+    position: absolute
+    width: 100%
+    z-index: -1
+    top: 0
+
+    &.gradient
+        background: linear-gradient(180deg, rgba(255, 254, 242, 0) calc(100vw/16*9/100*60), rgba(255, 254, 242, 1) calc(100vw/16*9/100*80))
+        height: 100%
+
+//Content
+.content
+    margin: 0 15% 50px
+    color: #39876F
+    text-shadow: 1px 2px 2px rgb(0 0 0 / 25%)
+
+    p
+        text-align: justify
+        text-indent: 1em
+        margin: 0.25em
+        font-size: 1.5em
+
+        &.big
+            font-size: 1.5em
+
+        &.medium
+            font-size: 1em
+
+        &.small
+            font-size: 0.5em
+
+    .title
+        font-weight: bold
+        text-shadow: 2px 4px 7px rgb(0 0 0 / 25%)
+        text-align: center
+
+        &.big
+            margin: 1em 0
+            font-size: 3em
+
+        &.medium
+            margin: 0.5em 0
+            font-size: 2em
+
+        &.small
+            margin: 0.25em 0
+            font-size: 1.5em
+
+//Table
+.table
+    border-collapse: collapse
+    width: 100%
+    margin: 0 auto
+    border-radius: 0 0 15px 15px
+    box-shadow: 0 0 0 2px #39876F
+    overflow: hidden
+
+    td, th
+        padding: 8px 15px
+        max-width: 200px
+
+    th
+        background-color: #39876F
+        color: #fffef2
+        text-align: center
+
+    td
+        text-align: left
+        word-wrap: break-word
+
+        &.centered
+            text-align: center
+
+    tr:nth-child(even)
+        background-color: #f2f2f2
+
+//Button
+.button
+    background-color: #39876F
+    color: #fffef2
+    padding: 8px 15px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    border: none
+    font-size: inherit
+    font-family: inherit
+
+    &:hover
+        background-color: #2f715b
+
+    &.under-table
+        border-radius: 0 0 15px 15px
+
+    &.danger
+        background-color: #ff3838
+
+        &:hover
+            background-color: #ed3838
+
+//Form
+.model-form
+    input:not(input[type=submit]), textarea, select
+        padding: 0 10px
+        margin: 8px 0
+        border: none
+        border-bottom: 1px solid #39876F
+        color: #39876F
+        background-color: #fffef2
+
+    input[type=number]
+        width:2em
+
+    textarea
+        width: 100%
+        box-sizing: border-box
+        height: 300px
+        resize: none
+        border: 1px solid #39876F
+        background-color: white
+
+    input:focus-visible
+        outline: none
+
+//Sidebar
+.sidebar
+    box-sizing: border-box
+    position: absolute
+    top: 0
+    padding-top: 2.5rem
+    height: 100vh
+    background-color: #39876F
+    z-index: -1
+    box-shadow: 0 0 6px rgb(0 0 0 / 25%)
+
+    &.module
+        width: 2rem
+        z-index: -2
+        background-color: #2f715b
+
+        .shadow-wrap
+            filter: drop-shadow(-3px 0 3px rgba(0, 0, 0, 0.25))
+
+        .tab
+            display: block
+            position: relative
+            text-align: center
+            background-color: #2f715b
+            width: 2rem
+            height: 3rem
+            clip-path: polygon(0% 13%, 100% 0, 100% 100%, 0% 87%)
+            justify-content: center
+            line-height: 3em
+
+            &.selected
+                background-color: #39876F
+
+    &.lesson
+        width: 14rem
+        margin-left: 2rem
+
+    &.left
+        left: 0
+
+    &.right
+        right: 0
+
+    .title
+        text-align: center
+        margin: 0.5em
+
+    .dropdown
+        .arrow
+            height: 0
+            width: 0
+            border-left: 4px solid transparent
+            border-right: 4px solid transparent
+            border-bottom: 4px solid #fffef2
+            position: relative
+            top: 10px
+
+        a
+            display: block
+            width: 90%
+
+    ul
+        list-style-type: none
+        padding-left: 1em
+        margin: 0
+
+    .section
+        .text
+            margin: 0 15px
+            font-size: 0.8em
+
+        a
+            text-decoration: none
+            color: #fffef2
+
+        li.text:hover, .dropdown a:hover
+            background-color: #2f715b
+
+        &collapsed
+            ul
+                display: none
+
+            .arrow
+                border-top: 4px solid #fffef2
+                border-bottom: none

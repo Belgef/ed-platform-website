@@ -5,12 +5,12 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-        <button type="submit" class="button right">Logout</button>
+        <button type="submit" class="button text dark right">Logout</button>
     </form>
-    <a class='right' asp-area="Identity" asp-page="/Account/Manage/Index">@User.Identity?.Name</a>
+    <a class='text dark right' asp-area="Identity" asp-page="/Account/Manage/Index">@User.Identity?.Name</a>
 }
 else
 {
-    <a class='right' asp-area="Identity" asp-page="/Account/Login">Login</a>
-    <a class='right' asp-area="Identity" asp-page="/Account/Register">Register</a>
+    <a class='text dark right' asp-area="Identity" asp-page="/Account/Login">Login</a>
+    <a class='text dark right' asp-area="Identity" asp-page="/Account/Register">Register</a>
 }

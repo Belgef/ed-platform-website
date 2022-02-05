@@ -45,8 +45,8 @@ namespace EdPlatformWebsite.Controllers
                 return NotFound();
             }
 
-            ViewBag.CurrentLesson = _context.Lessons.FirstOrDefault(lesson => lesson.Id == id);
-            ViewBag.Modules = _context.Modules.ToList();
+            ViewBag.Modules = await _context.Modules.Include(item=>item.Lessons).ThenInclude(item=>item.Exercises).ToListAsync();
+            ViewBag.CurrentLesson = await _context.Lessons.FirstOrDefaultAsync(lesson => lesson.Id == id);
 
             return View(lesson);
         }
@@ -69,7 +69,7 @@ namespace EdPlatformWebsite.Controllers
             {
                 _context.Add(lesson);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Edit), new { id = lesson.Id });
             }
             return View(lesson);
         }
