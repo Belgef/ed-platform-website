@@ -1,22 +1,16 @@
 {
   "dependencies": {
     "secrets1": {
-      "secretStore": null,
-      "resourceId": null,
-      "type": "secrets.user",
-      "connectionId": null
-    },
-    "secrets2": {
-      "secretStore": null,
+      "secretStore": "AzureAppSettings",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/EdPlatformWebsitevault",
       "type": "secrets.keyVault",
       "connectionId": "VaultUri"
     },
-    "mssql2": {
-      "secretStore": "LocalSecretsFile",
+    "mssql1": {
+      "secretStore": "AzureKeyVault",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/edplatformwebsitedbserver/databases/EdPlatformWebsite_db",
       "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:AzureConnection"
+      "connectionId": "ConnectionStrings:DefaultConnection"
     }
   }
 }
