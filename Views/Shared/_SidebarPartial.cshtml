@@ -76,7 +76,7 @@
                     <div class='dropdown'>
                         <div class='arrow'></div>
                         <a class='@("text dark" + (IsLessonCompleted(lesson.Id) ? " completed" : ""))' 
-                                asp-controller="Lessons" asp-action="Details" asp-route-id='@ViewBag.CurrentLesson.Id'>
+                                asp-controller="Lessons" asp-action="Details" asp-route-id='@lesson.Id'>
                             @lesson.Name
                         </a>
                     </div>

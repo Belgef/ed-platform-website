@@ -25,14 +25,14 @@ namespace EdPlatformWebsite.Controllers
         // GET: IOCases
         public async Task<IActionResult> Index()
         {
-            ViewBag.Exercises = _context.Exercises.ToDictionary(item => item.Id, item => item);
+            ViewBag.Exercises = _context.Exercises.OrderBy(item => item.Number).ToDictionary(item => item.Id, item => item);
             return View(await _context.IOCases.ToListAsync());
         }
 
         // GET: IOCases/Create
         public IActionResult Create()
         {
-            ViewBag.Exercises = _context.Exercises.ToList();
+            ViewBag.Exercises = _context.Exercises.OrderBy(item => item.Number).ToList();
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace EdPlatformWebsite.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Exercises = _context.Exercises.ToList();
+            ViewBag.Exercises = _context.Exercises.OrderBy(item => item.Number).ToList();
             return View(iOCase);
         }
 
