@@ -11,19 +11,73 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 var Editor = (function (_React$Component) {
     _inherits(Editor, _React$Component);
 
-    function Editor() {
+    function Editor(props) {
         _classCallCheck(this, Editor);
 
-        _get(Object.getPrototypeOf(Editor.prototype), 'constructor', this).apply(this, arguments);
+        _get(Object.getPrototypeOf(Editor.prototype), 'constructor', this).call(this, props);
+        this.putTag = this.putTag.bind(this);
     }
 
     _createClass(Editor, [{
+        key: 'putTag',
+        value: function putTag(tagName, classes, href) {
+            var selected = document.getSelection();
+            if (selected.anchorNode === selected.focusNode && selected.anchorNode.parentElement.id === 'text') {
+                var first = Math.min(selected.anchorOffset, selected.focusOffset),
+                    second = Math.max(selected.anchorOffset, selected.focusOffset);
+
+                var currText = selected.anchorNode.textContent,
+                    textBefore = currText.substring(0, first),
+                    textMiddle = currText.substring(first, second),
+                    textAfter = currText.substring(second);
+
+                var p = document.createElement(tagName);
+                if (classes !== undefined || classes === "") p.className = classes;
+                if (href !== undefined) p.setAttribute('href', href);
+                p.innerHTML = textMiddle;
+
+                selected.anchorNode.replaceWith(p);
+
+                if (textBefore.length > 0) p.parentNode.insertBefore(document.createTextNode(textBefore), p);
+                if (textAfter.length > 0) p.parentNode.insertBefore(document.createTextNode(textAfter), p.nextSibling);
+
+                document.getElementById('text-input').setAttribute('value', document.getElementById('text').innerHTML);
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this = this;
+
             return React.createElement(
-                'h1',
+                'div',
                 null,
-                'Hello'
+                React.createElement(
+                    'div',
+                    { className: 'tool-panel' },
+                    React.createElement(
+                        'button',
+                        { onClick: function () {
+                                return _this.putTag('p');
+                            } },
+                        'Paragraph'
+                    ),
+                    React.createElement(
+                        'button',
+                        { onClick: function () {
+                                return _this.putTag('p', 'code');
+                            } },
+                        'Code'
+                    ),
+                    React.createElement(
+                        'button',
+                        { onClick: function () {
+                                return _this.putTag('a', "", "google.com");
+                            } },
+                        'Link'
+                    )
+                ),
+                React.createElement('div', { id: 'text', dangerouslySetInnerHTML: { __html: this.props.text.replaceAll(/\s+/g, ' ') } })
             );
         }
     }]);
@@ -31,5 +85,5 @@ var Editor = (function (_React$Component) {
     return Editor;
 })(React.Component);
 
-ReactDOM.render(React.createElement(Editor, null), document.getElementById('editor'));
+ReactDOM.render(React.createElement(Editor, { text: document.getElementById('text-input').value }), document.getElementById('editor'));
 
