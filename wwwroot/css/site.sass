@@ -71,16 +71,6 @@ body
         text-align: justify
         text-indent: 1em
         margin: 0.25em
-        font-size: 1.5em
-
-        &.big
-            font-size: 1.5em
-
-        &.medium
-            font-size: 1em
-
-        &.small
-            font-size: 0.5em
 
     .title
         font-weight: bold
@@ -98,6 +88,15 @@ body
         &.small
             margin: 0.25em 0
             font-size: 1.5em
+
+.big
+    font-size: 1.5em
+
+.medium
+    font-size: 1em
+
+.small
+    font-size: 0.7em
 
 //Table
 .table
@@ -260,3 +259,48 @@ body
             .arrow
                 border-top: 4px solid #fffef2
                 border-bottom: none
+
+//Editor
+#editor
+    border: 2px solid #39876F
+    border-radius: 4px
+    margin: 10px 0
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25)
+    
+    #toolbar    
+        padding: 10px
+
+    .intLink
+        cursor: pointer
+        width: 30px
+
+    img.intLink
+        border: 0
+
+    #toolBar1 select
+        font-size: 0.7em
+        color:#39876F
+
+    #textBox
+        height: 400px
+        border-top: 1px #39876F solid
+        padding: 12px
+        overflow: scroll
+
+        #sourceText
+            padding: 0
+            margin: 0
+            min-width: 498px
+            min-height: 200px
+
+    #editMode label
+        cursor: pointer
+
+.theory
+    margin: 0
+    padding: 1rem
+    position: absolute
+    right: 0
+    width: calc(100% - 16rem)
+    box-sizing: border-box
+    overflow-wrap: break-word

@@ -25,7 +25,7 @@ namespace EdPlatformWebsite.Controllers
         // GET: Modules
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Modules.ToListAsync());
+            return View(await _context.Modules.OrderBy(item => item.Number).ToListAsync());
         }
 
         // GET: Modules/Create

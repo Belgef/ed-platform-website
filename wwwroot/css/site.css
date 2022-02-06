@@ -76,16 +76,6 @@ body {
   text-align: justify;
   text-indent: 1em;
   margin: 0.25em;
-  font-size: 1.5em;
-}
-.content p.big {
-  font-size: 1.5em;
-}
-.content p.medium {
-  font-size: 1em;
-}
-.content p.small {
-  font-size: 0.5em;
 }
 .content .title {
   font-weight: bold;
@@ -103,6 +93,18 @@ body {
 .content .title.small {
   margin: 0.25em 0;
   font-size: 1.5em;
+}
+
+.big {
+  font-size: 1.5em;
+}
+
+.medium {
+  font-size: 1em;
+}
+
+.small {
+  font-size: 0.7em;
 }
 
 .table {
@@ -261,4 +263,50 @@ body {
 .sidebar .sectioncollapsed .arrow {
   border-top: 4px solid #fffef2;
   border-bottom: none;
+}
+
+#editor {
+  border: 2px solid #39876F;
+  border-radius: 4px;
+  margin: 10px 0;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+}
+#editor #toolbar {
+  padding: 10px;
+}
+#editor .intLink {
+  cursor: pointer;
+  width: 30px;
+}
+#editor img.intLink {
+  border: 0;
+}
+#editor #toolBar1 select {
+  font-size: 0.7em;
+  color: #39876F;
+}
+#editor #textBox {
+  height: 400px;
+  border-top: 1px #39876F solid;
+  padding: 12px;
+  overflow: scroll;
+}
+#editor #textBox #sourceText {
+  padding: 0;
+  margin: 0;
+  min-width: 498px;
+  min-height: 200px;
+}
+#editor #editMode label {
+  cursor: pointer;
+}
+
+.theory {
+  margin: 0;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  width: calc(100% - 16rem);
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
