@@ -1,17 +1,25 @@
-﻿var oDoc;
+﻿'use strict';
+
+var oDoc;
 
 function initDoc() {
     oDoc = document.getElementById("textBox");
-    if (document.lessonEditForm.switchMode.checked) { setDocMode(true); }
+    if (document.lessonEditForm.switchMode.checked) {
+        setDocMode(true);
+    }
     document.getElementById('textBox').innerHTML = document.getElementById('text-input').value;
 }
 
 function formatDoc(sCmd, sValue) {
-    if (validateMode()) { document.execCommand(sCmd, false, sValue); oDoc.focus(); }
+    if (validateMode()) {
+        document.execCommand(sCmd, false, sValue);oDoc.focus();
+    }
 }
 
 function validateMode() {
-    if (!document.lessonEditForm.switchMode.checked) { return true; }
+    if (!document.lessonEditForm.switchMode.checked) {
+        return true;
+    }
     alert("Uncheck \"Show HTML\".");
     oDoc.focus();
     return false;
@@ -47,3 +55,4 @@ function save() {
 }
 
 document.addEventListener("DOMContentLoaded", initDoc);
+

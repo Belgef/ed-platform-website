@@ -10,14 +10,18 @@
   <ItemGroup>
     
     <Content Remove="compilerconfig.json" />
+    
+    <Content Remove="wwwroot\js\editor2.es5.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\editor2.es5.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\js\editor.es5.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +36,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\editor\" />
   </ItemGroup>
 
 </Project>

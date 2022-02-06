@@ -6,5 +6,13 @@
   {
     "outputFile": "wwwroot/js/editor.js",
     "inputFile": "wwwroot/js/editor.jsx"
+  },
+  {
+    "outputFile": "wwwroot/js/editor2.es5.js",
+    "inputFile": "wwwroot/js/editor2.js"
+  },
+  {
+    "outputFile": "wwwroot/js/editor.es5.js",
+    "inputFile": "wwwroot/js/editor.js"
   }
 ]
