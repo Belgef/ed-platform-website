@@ -2,9 +2,9 @@
 {
     public string IntToRoman(int num)
     {
-        int[] val = new int[]{ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-        string[] syb = new string[]{ "M", "CM", "D", "CD", "C", "XC", "L", 
-                "XL", "X", "IX", "V", "IV", "I" };
+        int[] val = new int[] { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+        string[] syb = new string[]{ "M", "CM", "D", "CD", "C", "XC", "L",
+"XL", "X", "IX", "V", "IV", "I" };
         string romanNum = "";
         int counter = 0;
         while (num > 0)
@@ -27,7 +27,7 @@
 
     public Lesson? GetFirstModuleLesson(int id)
     {
-        return GetModuleById(id)?.Lessons?.MinBy(lesson=>lesson.Number);
+        return GetModuleById(id)?.Lessons?.MinBy(lesson => lesson.Number);
     }
 
     public bool IsLessonCompleted(int id)
@@ -55,12 +55,13 @@
         {
             @foreach (var module in ViewBag.Modules)
             {
-               @if(GetFirstModuleLesson(module.Id) is not null)
-               {
-                <a class='@("tab text dark" + (IsModuleCompleted(module.Id) ? " completed" : "") + (module.Id==currentModule?.Id ? " selected" : ""))' 
-                        asp-controller="Lessons" asp-action="Details" asp-route-id='@GetFirstModuleLesson(module.Id)?.Id'>@IntToRoman(module.Number)</a>
-            
-               }
+                @if (GetFirstModuleLesson(module.Id) is not null)
+                {
+                    <a class='@("tab text dark" + (IsModuleCompleted(module.Id) ? " completed" : "") + (module.Id==currentModule?.Id ? " selected" : ""))'
+            asp-controller="Lessons" asp-action="Details"
+            asp-route-id='@GetFirstModuleLesson(module.Id)?.Id'>@IntToRoman(module.Number)</a>
+
+                }
             }
         }
     </div>
