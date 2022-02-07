@@ -46,8 +46,8 @@ namespace EdPlatformWebsite.Controllers
 
             ViewBag.Modules = await _context.Modules
                 .OrderBy(item => item.Number)
-                .Include(item=>item.Lessons.OrderBy(item => item.Number))
-                .ThenInclude(item=>item.Exercises.OrderBy(item => item.Number))
+                .Include(item=>item.Lessons)
+                .ThenInclude(item=>item.Exercises)
                 .ToListAsync();
             ViewBag.CurrentLesson = await _context.Lessons.FirstOrDefaultAsync(lesson => lesson.Id == id);
 

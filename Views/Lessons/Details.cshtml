@@ -1,10 +1,10 @@
 ﻿@model EdPlatformWebsite.Models.Lesson
 
 @{
-    ViewData["Title"] = Html.DisplayFor(model => model.Number)+". "+Html.DisplayFor(model => model.Name);
+    ViewData["Title"] = Html.DisplayTextFor(model => model.Number)+". "+Html.DisplayTextFor(model => model.Name);
 }
 
 <partial name="_SidebarPartial" />
-<div class='content theory'>
+<div class='content no-sidebar left'>
     @Html.Raw(Html.DisplayTextFor(model => model.Content))
 </div>

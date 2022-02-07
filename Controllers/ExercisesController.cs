@@ -45,6 +45,14 @@ namespace EdPlatformWebsite.Controllers
                 return NotFound();
             }
 
+            ViewBag.Modules = await _context.Modules
+                .OrderBy(item => item.Number)
+                .Include(item => item.Lessons)
+                .ThenInclude(item => item.Exercises)
+                .ToListAsync();
+            ViewBag.CurrentExercise = exercise;
+            ViewBag.CurrentLesson = await _context.Lessons.FirstOrDefaultAsync(lesson => lesson.Id == exercise.LessonId);
+
             return View(exercise);
         }
 
