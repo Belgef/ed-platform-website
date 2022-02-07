@@ -1,4 +1,4 @@
-﻿<div id='editor'>
+﻿<div id='lesson-editor'>
     <div id='toolbar'>
         <div id="toolBar1">
             <select onchange="formatDoc('formatblock',this[this.selectedIndex].value);this.selectedIndex=0;">
@@ -68,4 +68,5 @@
         <input type="checkbox" name="switchMode" id="switchBox" onchange="setDocMode(this.checked);" /> <label for="switchBox" class='small'>Show HTML</label>
     </div>
     <div id="textBox" contenteditable="true"></div>
+    <script src="~/js/lesson-editor.es5.min.js" asp-append-version="true"></script>
 </div>

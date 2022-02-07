@@ -70,12 +70,12 @@
     <ul>
         @if (currentModule != null && currentModule.Lessons != null)
         {
-            @foreach (var lesson in currentModule.Lessons)
+            @foreach (var lesson in currentModule.Lessons.OrderBy(item=>item.Number))
             {
                 <li class='@("section" + (lesson.Id != ViewBag.CurrentLesson.Id ? " collapsed" : ""))'>
                     <div class='dropdown'>
                         <div class='arrow'></div>
-                        <a class='@("text dark" + (IsLessonCompleted(lesson.Id) ? " completed" : ""))' 
+                        <a class='@("text dark" + (IsLessonCompleted(lesson.Id) ? " completed" : "") + (ViewBag.CurrentExercise == null && lesson.Id == ViewBag.CurrentLesson.Id ? " current" : ""))' 
                                 asp-controller="Lessons" asp-action="Details" asp-route-id='@lesson.Id'>
                             @lesson.Name
                         </a>
@@ -85,7 +85,7 @@
                         {
                             @foreach (var exercise in lesson.Exercises)
                             {
-                                <li class='@("text dark" + (IsExerciseCompleted(exercise.Id) ? " completed" : ""))'>
+                                <li class='@("text dark" + (IsExerciseCompleted(exercise.Id) ? " completed" : "") + (ViewBag.CurrentExercise != null && exercise.Id == ViewBag.CurrentExercise.Id ? " current" : ""))'>
                                     <a asp-area="" asp-controller="Exercises" asp-action="Details" asp-route-id=@exercise.Id>
                                         @exercise.Name
                                     </a>
