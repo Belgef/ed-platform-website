@@ -26,7 +26,7 @@ namespace EdPlatformWebsite.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Modules = _context.Modules.ToDictionary(item => item.Id, item => item);
-            return View(await _context.Lessons.ToListAsync());
+            return View(await _context.Lessons.OrderBy(item => item.ModuleId).ThenBy(item => item.Number).ToListAsync());
         }
 
         // GET: Lessons/Details/5
@@ -38,14 +38,17 @@ namespace EdPlatformWebsite.Controllers
                 return NotFound();
             }
 
-            var lesson = await _context.Lessons
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var lesson = await _context.Lessons.FirstOrDefaultAsync(m => m.Id == id);
             if (lesson == null)
             {
                 return NotFound();
             }
 
-            ViewBag.Modules = await _context.Modules.Include(item=>item.Lessons).ThenInclude(item=>item.Exercises).ToListAsync();
+            ViewBag.Modules = await _context.Modules
+                .OrderBy(item => item.Number)
+                .Include(item=>item.Lessons)
+                .ThenInclude(item=>item.Exercises)
+                .ToListAsync();
             ViewBag.CurrentLesson = await _context.Lessons.FirstOrDefaultAsync(lesson => lesson.Id == id);
 
             return View(lesson);
@@ -54,7 +57,7 @@ namespace EdPlatformWebsite.Controllers
         // GET: Lessons/Create
         public IActionResult Create()
         {
-            ViewBag.Modules = _context.Modules.ToList();
+            ViewBag.Modules = _context.Modules.OrderBy(item => item.Number).ToList();
             return View();
         }
 
@@ -69,7 +72,7 @@ namespace EdPlatformWebsite.Controllers
             {
                 _context.Add(lesson);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Edit), new { id = lesson.Id });
+                return RedirectToAction(nameof(Details), new { id = lesson.Id });
             }
             return View(lesson);
         }
@@ -87,7 +90,7 @@ namespace EdPlatformWebsite.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Modules = _context.Modules.ToList();
+            ViewBag.Modules = _context.Modules.OrderBy(item => item.Number).ToList();
             return View(lesson);
         }
 

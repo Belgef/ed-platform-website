@@ -4,33 +4,17 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Exercise</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Number)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Number)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
+<partial name="_SidebarPartial" />
+<div class='sidebar exercise'>
+    <p class='title dark'>@(Html.DisplayTextFor(model => model.Number)+". "+Html.DisplayTextFor(model => model.Name))</p>
+    <div class='section'>
+         <p class='text dark'>@Html.DisplayNameFor(model => model.Description)</p>
+    </div>
+    
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class='content no-sidebar left right'>
+    <div id="editor"></div>
+
+    <script src="~/js/code-editor/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/js/code-editor.es5.min.js" asp-append-version="true"></script>
 </div>

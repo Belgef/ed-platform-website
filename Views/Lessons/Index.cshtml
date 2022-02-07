@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EdPlatformWebsite.Models.Lesson>
+﻿@using HtmlAgilityPack
+@model IEnumerable<EdPlatformWebsite.Models.Lesson>
 
 @{
     ViewData["Title"] = "Index";
@@ -10,29 +11,30 @@
     <table class="table">
         <thead>
             <tr>
-                <th>@Html.DisplayNameFor(model => model.Number)</th>
+                <th>Module</th>
                 <th>@Html.DisplayNameFor(model => model.Name)</th>
                 <th>@Html.DisplayNameFor(model => model.Content)</th>
-                <th>Module</th>
                 <th></th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model ?? new Lesson[0])
             {
                 <tr>
-                    <td class='centered'>@Html.DisplayFor(modelItem => item.Number)</td>
+                    <td>@ViewBag.Modules[item.ModuleId].Name</td>
 
-                    <td class='centered'>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td class='centered'>@(Html.DisplayTextFor(modelItem => item.Number)+". " + Html.DisplayTextFor(modelItem => item.Name))</td>
 
                     @{
                         string content = Html.DisplayTextFor(modelItem => item.Content);
+                        content = System.Text.RegularExpressions.Regex.Replace(content, @"<(.|\n)*?>", "");
+                        if(content.Length > 100)
+                            content = content.Substring(0, 100)+"...";
                     }
-                    <td>@(content.Length > 250 ? content.Substring(0, 250).Trim()+"..." : content)</td>
-                    
-                    <td>@ViewBag.Modules[item.ModuleId].Name</td>
+                    <td>@content</td>
+
 
                     <td class='centered'><a class="button" asp-action="Details" asp-route-id="@item.Id">Details </a></td>
                     <td class='centered'><a class="button" asp-action="Edit" asp-route-id="@item.Id">Edit    </a></td>

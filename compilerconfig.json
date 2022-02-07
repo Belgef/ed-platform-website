@@ -2,5 +2,13 @@
   {
     "outputFile": "wwwroot/css/site.css",
     "inputFile": "wwwroot/css/site.sass"
+  },
+  {
+    "outputFile": "wwwroot/js/code-editor.es5.js",
+    "inputFile": "wwwroot/js/code-editor.js"
+  },
+  {
+    "outputFile": "wwwroot/js/lesson-editor.es5.js",
+    "inputFile": "wwwroot/js/lesson-editor.js"
   }
 ]
