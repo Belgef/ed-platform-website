@@ -1,38 +1,117 @@
-.login-page-title{
-    text-align: center;
-    color: #39876F;
-    padding-bottom: 20px;
+.form-background{
+    top: 2rem;
+    height: calc(100vh - 2rem);
+    position: absolute;
+    background-color: #4eb494;
+    width: 100vw;
 }
 
-.login-form{
-    width: 40%;
+.form .title{
+    text-align: center;
+}
+
+.form{
+    margin: auto;
+    min-width: 350px;
+    width: 25%;
+    color: #39876F;    
+    background-color: #FFFEF2;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 25%);
+    padding: 1em;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.form input:not(input[type = checkbox]){
+    display: inline-block;
+    width: 100%;
+}
+
+.form-group .field{
     padding: 7px 12px;
-    margin: 8px 0;
+    margin-bottom: 8px;
     box-sizing: border-box;
     border: 2px solid #39876F;
     color: #39876F;
     border-radius: 4px;
-    background-color: white;
+}
+
+.form label:not(.remember-me){
+    font-size: 16px;
 }
 
 form .warning{
     color: rgb(238, 79, 79);
+    font-size: 16px;
+    font-style: italic;
 }
 
-.login-remember-me{
-    font-size: 18px;
-    color: #39876F;
-}
-
-.login-remember-me-checkbox{
-    width: 0.7em;
-    height: 0.7em;
+.center{
+    text-align: center;
 }
 
 .form-link{
     color: #39876F;
-    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.right{
+    float: right;
+}
+
+.submit {
+    transition: background-color .3s, box-shadow .3s;
+    padding: 12px 0;
+    margin: 10px;
+    margin-bottom: 0px;
+    width: 200px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 -1px 0 rgb(0 0 0 / 4%), 0 1px 1px rgb(0 0 0 / 25%);
+    color: #FFFEF2;
+    font-size: inherit;
+    font-weight: 700;
+    font-family: inherit;
+    background-color: #39876F;
+    background-position: 12px 13px;
+}  
+
+.submit:hover {
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+  }
+  
+.submit:active {
+    background-color: #eeeeee;
+  }
+  
+.submit:focus {
+    outline: none;
+    box-shadow: 
+      0 -1px 0 rgba(0, 0, 0, .04),
+      0 2px 4px rgba(0, 0, 0, .25),
+      0 0 0 3px #c8dafc;
+}
+
+.or{
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+}
+
+.bottom-link{
+    color: #39876F;
     text-decoration: none;
     font-size: inherit;
-    font-family: inherit;
+    transition: background-color .3s, text-shadow .3s;
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 4%), 0 1px 1px rgb(0 0 0 / 25%);
 }
+
+.bottom-link:hover {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+}
+  
+.bottom-link:active {
+    background-color: #eeeeee;
+}
+  
