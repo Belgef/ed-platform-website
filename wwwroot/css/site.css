@@ -223,6 +223,7 @@ body {
 .sidebar.exercise {
   width: 14rem;
   right: 0;
+  padding-left: 1em;
 }
 .sidebar .title {
   text-align: center;
