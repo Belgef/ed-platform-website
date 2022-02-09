@@ -10,5 +10,9 @@
   {
     "outputFile": "wwwroot/js/lesson-editor.es5.js",
     "inputFile": "wwwroot/js/lesson-editor.js"
+  },
+  {
+    "outputFile": "wwwroot/css/login.css",
+    "inputFile": "wwwroot/css/login.sass"
   }
 ]

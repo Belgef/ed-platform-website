@@ -32,7 +32,7 @@
                 @Html.DisplayNameFor(m => m.Input.RememberMe)
             </label>
 
-            <div class="form-group center">
+            <div class="form-group centered">
                 <button id="login-submit" type="submit" class="submit">Log in</button>
             </div>
         </form>
@@ -41,7 +41,7 @@
         {
             <p class="or">or</p>
 
-            <div class="form-group center">
+            <div class="form-group centered">
                 <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post"
                 class="inline">
                     <button type="submit" class="login-with-google-btn" name="provider"
@@ -55,7 +55,7 @@
 
         <p class="or">or</p>
 
-        <div class="center">
+        <div class="centered">
             <a class="bottom-link" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new
                 user</a>
         </div>
