@@ -13,7 +13,7 @@ namespace EdPlatformWebsite.CodeExecution
 
         public readonly string NewLine = "^\r?\n\r?";
         public readonly string Number = @"^-?\d+";
-        public readonly string Decimal = @"^-?\d+\[.,]?\d*";
+        public readonly string Decimal = @"^-?\d+([.,]\d+)?";
 
         public List<object?> GetObjects(string str)
         {
@@ -29,8 +29,9 @@ namespace EdPlatformWebsite.CodeExecution
                             objects.Add(null);
                         else
                         {
+                            line = line.TrimStart();
                             string resultStr = Regex.Match(line, Number).Value;
-                            Regex.Replace(line, Number+@"\s*", "");
+                            line = Regex.Replace(line, Number+@"\s*", "");
                             bool success = int.TryParse(resultStr, out int resultObj);
                             objects.Add(success?resultObj:null);
                         }
@@ -40,19 +41,24 @@ namespace EdPlatformWebsite.CodeExecution
                             objects.Add(null);
                         else
                         {
+                            line = line.TrimStart();
                             string resultStr = Regex.Match(line, Decimal).Value;
-                            Regex.Replace(line, Decimal+@"\s*", "");
-                            bool success = double.TryParse(resultStr, out double resultObj);
+                            line =  Regex.Replace(line, Decimal+@"\s*", "");
+                            bool success = double.TryParse(resultStr.Replace('.', ','), out double resultObj);
                             objects.Add(success ? resultObj : null);
                         }
                         break;
                     case 'n':
+                        if (Regex.Match(line, @"\S").Success)
+                            throw new ArgumentException("Wrong input");
                         line = reader.ReadLine();
                         break;
                     default:
                         throw new ArgumentException("Output matcher pattern contains unrecognized character");
                 }
             }
+            if (Regex.Match(line, @"\S").Success)
+                throw new ArgumentException("Wrong input");
             return objects;
         }
     }

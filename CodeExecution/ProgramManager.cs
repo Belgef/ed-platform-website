@@ -17,7 +17,7 @@ namespace EdPlatformWebsite.CodeExecution
         }
         public string Check(IOCase iocase)
         {
-            string output = GetOutput(iocase.Input ?? "", out string? error);
+            string output = GetOutput(iocase.Input?.Replace("\r", "") ?? "", out string? error);
             if(error != null)
                 return error;
             List<object?> expected = _matcher.GetObjects(iocase.Output ?? "");
@@ -26,7 +26,7 @@ namespace EdPlatformWebsite.CodeExecution
             {
                 if (expected[i] == null || actual[i] == null)
                     return "failed";
-                else if (expected[i] is double d1 && actual[i] is double d2 && d1 - d2 > 1e-5)
+                else if (expected[i] is double d1 && actual[i] is double d2 && Math.Abs(d1 - d2) > 1e-5)
                     return "failed";
                 else if(!expected[i]?.Equals(actual[i]) ?? true)
                     return "failed";

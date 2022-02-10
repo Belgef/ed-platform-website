@@ -63,7 +63,7 @@ namespace EdPlatformWebsite.Controllers
         [HttpPost]
         public IActionResult CheckCode(int? id, string? code)
         {
-            CodeExecution.ProgramManager programManager = new(code, new Uri("https://rest-api-ed-platform.herokuapp.com/"), "n");
+            CodeExecution.ProgramManager programManager = new(code, new Uri("https://rest-api-ed-platform.herokuapp.com/"), "d");
             List<IOCase> iocases = _context.IOCases.Where(iocase => iocase.ExerciseId == id).OrderBy(iocase => iocase.Number).ToList();
             string result = "";
             foreach (IOCase iocase in iocases)
