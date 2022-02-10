@@ -9,8 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using EdPlatformWebsite.Data;
 using EdPlatformWebsite.Models;
 using Microsoft.AspNetCore.Authorization;
-using IronPython.Hosting;
-using EdPlatformWebsite.PythonCodeManagement;
+using System.Net;
 
 namespace EdPlatformWebsite.Controllers
 {
@@ -64,23 +63,26 @@ namespace EdPlatformWebsite.Controllers
         [HttpPost]
         public IActionResult CheckCode(int? id, string? code)
         {
-            string s = "";
-            MemoryStream ms = new MemoryStream();
-            EventRaisingStreamWriter outputWr = new EventRaisingStreamWriter(ms);
-            outputWr.StringWritten += new EventHandler<MyEvtArgs<string>>(sWr_StringWritten);
-            void sWr_StringWritten(object sender, MyEvtArgs<string> e)
-            {
-                s += e.Value;
-            }
+            CodeExecution.ProgramManager programManager = new(code, new Uri("https://rest-api-ed-platform.herokuapp.com/"), "n");
+            List<IOCase> iocases = _context.IOCases.Where(iocase => iocase.ExerciseId == id).OrderBy(iocase => iocase.Number).ToList();
+            string result = "";
+            foreach (IOCase iocase in iocases)
+                result += programManager.Check(iocase) + "\n";
 
-            var engine = Python.CreateEngine();
-            var source = engine.CreateScriptSourceFromString(code);
-            var scope = engine.CreateScope();
-            engine.Runtime.IO.SetOutput(ms, outputWr);
-            //engine.Runtime.IO.SetErrorOutput(stream, txtWriter);
-            source.Execute(scope);
-            return RedirectToAction(nameof(Details), new { id = id, result = s });
+            return RedirectToAction(nameof(Details), new { id, result });
         }
+
+        private string SendCode(string code, string input)
+        {
+            string output;
+            using (WebClient wc = new WebClient())
+            {
+                output = wc.DownloadString($"https://rest-api-ed-platform.herokuapp.com/?code={code}&inputString={input}");
+            }
+            var results = Newtonsoft.Json.JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(output);
+            return results["output"].ToString();
+        }
+
         #endregion
 
         #region Create

@@ -83,7 +83,7 @@
                     <ul>
                         @if (lesson.Exercises != null)
                         {
-                            @foreach (var exercise in lesson.Exercises)
+                            @foreach (var exercise in lesson.Exercises.OrderBy(item=>item.Number))
                             {
                                 <li class='@("text dark" + (IsExerciseCompleted(exercise.Id) ? " completed" : "") + (ViewBag.CurrentExercise != null && exercise.Id == ViewBag.CurrentExercise.Id ? " current" : ""))'>
                                     <a asp-area="" asp-controller="Exercises" asp-action="Details" asp-route-id=@exercise.Id>
