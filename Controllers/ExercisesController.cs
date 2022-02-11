@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using EdPlatformWebsite.Data;
 using EdPlatformWebsite.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Net;
 
 namespace EdPlatformWebsite.Controllers
 {
@@ -29,9 +30,10 @@ namespace EdPlatformWebsite.Controllers
             return View(await _context.Exercises.ToListAsync());
         }
 
+        #region Details
         // GET: Exercises/Details/5
         [AllowAnonymous]
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string? result = null)
         {
             if (id == null)
             {
@@ -52,10 +54,38 @@ namespace EdPlatformWebsite.Controllers
                 .ToListAsync();
             ViewBag.CurrentExercise = exercise;
             ViewBag.CurrentLesson = await _context.Lessons.FirstOrDefaultAsync(lesson => lesson.Id == exercise.LessonId);
+            if(result != null)
+                ViewBag.Result = result;
 
             return View(exercise);
         }
 
+        [HttpPost]
+        public IActionResult CheckCode(int? id, string? code)
+        {
+            CodeExecution.ProgramManager programManager = new(code, new Uri("https://rest-api-ed-platform.herokuapp.com/"), "d");
+            List<IOCase> iocases = _context.IOCases.Where(iocase => iocase.ExerciseId == id).OrderBy(iocase => iocase.Number).ToList();
+            string result = "";
+            foreach (IOCase iocase in iocases)
+                result += programManager.Check(iocase) + "\n";
+
+            return RedirectToAction(nameof(Details), new { id, result });
+        }
+
+        private string SendCode(string code, string input)
+        {
+            string output;
+            using (WebClient wc = new WebClient())
+            {
+                output = wc.DownloadString($"https://rest-api-ed-platform.herokuapp.com/?code={code}&inputString={input}");
+            }
+            var results = Newtonsoft.Json.JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(output);
+            return results["output"].ToString();
+        }
+
+        #endregion
+
+        #region Create
         // GET: Exercises/Create
         public IActionResult Create()
         {
@@ -78,7 +108,9 @@ namespace EdPlatformWebsite.Controllers
             }
             return View(exercise);
         }
+        #endregion
 
+        #region Edit
         // GET: Exercises/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -130,7 +162,9 @@ namespace EdPlatformWebsite.Controllers
             }
             return View(exercise);
         }
+        #endregion
 
+        #region Delete
         // GET: Exercises/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -159,6 +193,7 @@ namespace EdPlatformWebsite.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
         private bool ExerciseExists(int id)
         {

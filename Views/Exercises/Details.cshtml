@@ -10,10 +10,19 @@
     <div class='section'>
          <p class='text dark'>@Html.DisplayNameFor(model => model.Description)</p>
     </div>
-    
+    <button type='button' onclick="sendCode()">Send code</button>
+    @if(ViewBag.Result != null)
+    {
+        <p class='title dark'>Result</p>
+        <p class='text dark'>@ViewBag.Result</p>
+    }
 </div>
 <div class='content no-sidebar left right'>
-    <div id="editor"></div>
+    <form name='codeForm' asp-action="CheckCode" method='post'>
+        <input type='hidden' asp-for="Id" />
+        <input type='hidden' name='code' />
+        <div id="editor"></div>
+    </form>
 
     <script src="~/js/code-editor/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="~/js/code-editor.es5.min.js" asp-append-version="true"></script>
