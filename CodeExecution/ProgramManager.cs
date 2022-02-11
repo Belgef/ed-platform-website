@@ -18,7 +18,7 @@ namespace EdPlatformWebsite.CodeExecution
         public string Check(IOCase iocase)
         {
             string output = GetOutput(iocase.Input?.Replace("\r", "") ?? "", out string? error);
-            if(error != null)
+            if(error != null && error.Length > 0)
                 return error;
             List<object?> expected = _matcher.GetObjects(iocase.Output ?? "");
             List<object?> actual = _matcher.GetObjects(output);
