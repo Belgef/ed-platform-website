@@ -5,61 +5,57 @@
     ViewData["Title"] = "Log in";
 }
 
-<div class="form-background">
-    <div class="form">
-        <h1 class="title">@ViewData["Title"]</h1>
+<div class="form">
+    <h1 class="title">@ViewData["Title"]</h1>
 
-        <form id="account" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form id="account" method="post">
+        <div asp-validation-summary="ModelOnly" class="warning"></div>
 
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <span asp-validation-for="Input.Email" class="warning right"></span>
-                <input asp-for="Input.Email" autocomplete="username" aria-required="true"
-                    placeholder="example@gmail.com" class="field" />
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="warning right"></span>
-                <input asp-for="Input.Password" autocomplete="current-password" aria-required="true"
-                    placeholder="********" class="field" />
-                <a class="form-link right" id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-            </div>
-
-            <label asp-for="Input.RememberMe" class="remember-me">
-                <input asp-for="Input.RememberMe" />
-                @Html.DisplayNameFor(m => m.Input.RememberMe)
-            </label>
-
-            <div class="form-group center">
-                <button id="login-submit" type="submit" class="submit">Log in</button>
-            </div>
-        </form>
-
-        @if ((Model.ExternalLogins?.Count ?? 0) != 0)
-        {
-            <p class="or">or</p>
-
-            <div class="form-group center">
-                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post"
-                class="inline">
-                    <button type="submit" class="login-with-google-btn" name="provider"
-                    value="@Model.ExternalLogins[0].Name"
-                    title="Log in using your @Model.ExternalLogins[0].DisplayName account">
-                        Log in with @Model.ExternalLogins[0].DisplayName
-                    </button>
-                </form>
-            </div>
-        }
-
-        <p class="or">or</p>
-
-        <div class="center">
-            <a class="bottom-link" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new
-                user</a>
+        <div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <span asp-validation-for="Input.Email" class="warning right"></span>
+            <input asp-for="Input.Email" autocomplete="username" aria-required="true"
+                placeholder="example@gmail.com" class="field" />
         </div>
 
+        <div class="form-group">
+            <label asp-for="Input.Password"></label>
+            <span asp-validation-for="Input.Password" class="warning right"></span>
+            <input asp-for="Input.Password" autocomplete="current-password" aria-required="true"
+                placeholder="********" class="field" />
+            <a class="form-link right" id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+        </div>
+
+        <label asp-for="Input.RememberMe" class="remember-me">
+            <input asp-for="Input.RememberMe" />
+            @Html.DisplayNameFor(m => m.Input.RememberMe)
+        </label>
+
+        <div class="form-group centered">
+            <button id="login-submit" type="submit" class="submit">Log in</button>
+        </div>
+    </form>
+
+    @if ((Model.ExternalLogins?.Count ?? 0) != 0)
+    {
+        <p class="or">or</p>
+
+        <div class="form-group centered">
+            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post"
+            class="inline">
+                <button type="submit" class="login-with-google-btn" name="provider"
+                value="@Model.ExternalLogins[0].Name"
+                title="Log in using your @Model.ExternalLogins[0].DisplayName account">
+                    Log in with @Model.ExternalLogins[0].DisplayName
+                </button>
+            </form>
+        </div>
+    }
+
+    <p class="or">or</p>
+
+    <div class="centered">
+        <a class="bottom-link" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
     </div>
 </div>
 

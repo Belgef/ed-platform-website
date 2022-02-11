@@ -1,0 +1,10 @@
+﻿@model string
+
+@if (!String.IsNullOrEmpty(Model))
+{
+    var statusMessageClass = Model.StartsWith("Error") ? "warning" : "";
+    <div class="@statusMessageClass" role="alert">
+        <div>@Model</div>
+        <button type="button" class="button" asp-route='/'>Return to main page</button>
+    </div>
+}
