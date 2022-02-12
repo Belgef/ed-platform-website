@@ -5,11 +5,13 @@ namespace EdPlatformWebsite.CodeExecution
 {
     public class ProgramManager
     {
+        public const string Python = "https://rest-api-ed-platform.herokuapp.com/";
+
         private readonly string _code;
-        private readonly Uri _executionUri;
+        private readonly string _executionUri;
         private readonly OutputMatcher _matcher;
 
-        public ProgramManager(string code, Uri executionUri, string outputPattern)
+        public ProgramManager(string code, string executionUri, string outputPattern)
         {
             _code = code;
             _executionUri = executionUri;
@@ -38,7 +40,7 @@ namespace EdPlatformWebsite.CodeExecution
             string output;
             using (WebClient wc = new WebClient())
             {
-                output = wc.DownloadString($"https://rest-api-ed-platform.herokuapp.com/?code={_code}&inputString={input}");
+                output = wc.DownloadString(_executionUri+$"?code={_code}&inputString={input}");
             }
             var results = Newtonsoft.Json.JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(output);
             error = results["error"]?.ToString();
