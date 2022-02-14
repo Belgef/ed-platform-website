@@ -40,7 +40,7 @@ namespace EdPlatformWebsite.CodeExecution
             string output;
             using (WebClient wc = new WebClient())
             {
-                output = wc.DownloadString(_executionUri+$"?code={_code}&inputString={input}");
+                output = wc.DownloadString(_executionUri+$"?code={System.Web.HttpUtility.UrlEncode(_code)}&inputString={System.Web.HttpUtility.UrlEncode(input)}");
             }
             var results = Newtonsoft.Json.JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(output);
             error = results["error"]?.ToString();
