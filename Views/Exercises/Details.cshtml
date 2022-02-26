@@ -2,16 +2,18 @@
 
 @{
     ViewData["Title"] = "Details";
+    ViewData["theme"] = ThemeSetter.SetThemeClass(Context);
 }
 
 <partial name="_SidebarPartial" />
 <div class='sidebar exercise'>
-    <p class='title dark'>@(Html.DisplayTextFor(model => model.Number)+". "+Html.DisplayTextFor(model => model.Name))</p>
+    <p class='title dark'>@(Html.DisplayTextFor(model => model.Number)+". "+Html.DisplayTextFor(model => model.Name))
+    </p>
     <div class='section'>
-         <p class='text dark'>@Html.DisplayNameFor(model => model.Description)</p>
+        <p class='text dark'>@Html.DisplayNameFor(model => model.Description)</p>
     </div>
     <button type='button' onclick="sendCode()">Send code</button>
-    @if(ViewBag.Result != null)
+    @if (ViewBag.Result != null)
     {
         <p class='title dark'>Result</p>
         <p class='text dark'>@ViewBag.Result</p>
@@ -26,4 +28,10 @@
 
     <script src="~/js/code-editor/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="~/js/code-editor.es5.min.js" asp-append-version="true"></script>
+    <script>
+        if ('@ViewData["theme"].Equals("dark-mode")' == '@true')
+            editor.setTheme('ace/theme/idle_fingers');
+        else
+            editor.setTheme('ace/theme/crimson_editor');
+    </script>
 </div>

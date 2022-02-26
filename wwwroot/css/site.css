@@ -132,7 +132,7 @@ body {
   text-align: center;
 }
 .table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #92929210;
 }
 
 .button {
@@ -328,4 +328,62 @@ body {
   width: 100%;
   padding: 0;
   height: calc(100vh - 2.15rem);
+}
+
+.dark-mode {
+  background-color: #202124;
+}
+.dark-mode .navbar {
+  background-color: #173c2c;
+}
+.dark-mode .navbar a.dark:hover {
+  background-color: #285b46;
+}
+.dark-mode .navbar .button.dark {
+  background-color: #173c2c;
+}
+.dark-mode .navbar .button.dark:hover {
+  background-color: #285b46;
+}
+.dark-mode .background {
+  background: linear-gradient(180deg, rgba(255, 254, 242, 0) 33.75vw, #202124 45vw);
+}
+.dark-mode .table {
+  box-shadow: 0 0 0 2px #173c2c;
+}
+.dark-mode .table th {
+  background-color: #173c2c;
+}
+.dark-mode .table td .button {
+  background-color: #173c2c;
+}
+.dark-mode .button.under-table {
+  background-color: #173c2c;
+}
+.dark-mode .content {
+  color: #fffef2;
+}
+.dark-mode .title {
+  color: #fffef2;
+}
+.dark-mode .sidebar {
+  background-color: #173c2c;
+}
+.dark-mode .sidebar.module {
+  background-color: #112b20;
+}
+.dark-mode .sidebar.module .tab {
+  background-color: #153427;
+}
+.dark-mode .sidebar.module .tab.selected {
+  background-color: #1d4936;
+}
+.dark-mode .sidebar .current {
+  background-color: #285b46;
+}
+.dark-mode .sidebar .section .dropdown a:hover {
+  background-color: #285b46;
+}
+.dark-mode .sidebar .section li.text:hover {
+  background-color: #285b46;
 }
