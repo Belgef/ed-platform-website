@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewData["theme"] = ThemeSetter.SetThemeClass(Context);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,18 +13,22 @@
 
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 
+    <script src="~/js/site.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id"
         content="556467921036-ctdbhng9aavt4lq9j9ve2009vkkukibs.apps.googleusercontent.com">
 </head>
 
-<body>
+<body class='@ViewData["theme"]'>
     <div class='navbar'>
-        <a class="brand text dark" asp-area="" asp-controller="Home" asp-action="Index">
+        <a class=" brand text dark" asp-area="" asp-controller="Home" asp-action="Index">
             <img src="~/images/logo.svg" alt="Logo">
             <span>EdPlatform</span>
         </a>
+
         <partial name="_LoginPartial" />
+
+        <button class="button text dark right" style="cursor: pointer;" onclick="darkMode()">dark</button>
     </div>
     @RenderBody()
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

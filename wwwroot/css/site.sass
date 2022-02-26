@@ -124,7 +124,7 @@ body
             text-align: center
 
     tr:nth-child(even)
-        background-color: #f2f2f2
+        background-color: #92929210
 
 //Button
 .button
@@ -161,7 +161,7 @@ body
         background-color: #fffef2
 
     input[type=number]
-        width:2em
+        width: 2em
 
     textarea
         width: 100%
@@ -266,8 +266,6 @@ body
 
         &:hover
             background-color: #2e6452 !important
-            
-        
 
 //Editor
 #lesson-editor
@@ -275,8 +273,8 @@ body
     border-radius: 4px
     margin: 10px 0
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25)
-    
-    #toolbar    
+
+    #toolbar
         padding: 10px
 
     .intLink
@@ -288,7 +286,7 @@ body
 
     #toolBar1 select
         font-size: 0.7em
-        color:#39876F
+        color: #39876F
 
     #textBox
         height: 400px
@@ -321,6 +319,66 @@ body
             padding: 0
 
 #editor
-    width:100%
-    padding:0
+    width: 100%
+    padding: 0
     height: calc(100vh - 2.15rem)
+
+// Dark mode
+$dark-green: #173c2c
+$dark-green-hover: #153427
+$dark: #202124
+$green-hover: #285b46
+
+.dark-mode
+    background-color: $dark
+
+    .navbar
+        background-color: $dark-green
+
+        a.dark
+            &:hover
+                background-color: $green-hover
+
+        .button.dark
+            background-color: $dark-green
+
+            &:hover
+                background-color: $green-hover
+
+    .background
+        background: linear-gradient(180deg, rgba(255, 254, 242, 0) calc(100vw/16*9/100*60), $dark calc(100vw/16*9/100*80))
+
+    .table
+        box-shadow: 0 0 0 2px $dark-green
+
+        th
+            background-color: $dark-green
+        td
+            .button
+                background-color: $dark-green
+    .button.under-table
+        background-color: $dark-green
+
+    .content
+        color: #fffef2
+
+    .title
+        color: #fffef2
+
+    .sidebar
+        background-color: #173c2c
+        &.module
+            background-color: #112b20
+            .tab
+                background-color: $dark-green-hover
+                &.selected
+                    background-color: #1d4936
+        .current
+            background-color: $green-hover
+        .section
+            .dropdown
+                a:hover
+                    background-color: $green-hover
+
+            li.text:hover
+                background-color: $green-hover
